@@ -22,4 +22,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 )
 Input.displayName = "Input"
 
-export { Input }
+// export { Input }
+const MemoizedInput = React.memo(Input)
+
+export { MemoizedInput as Input }

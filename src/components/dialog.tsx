@@ -1,3 +1,8 @@
+import { Feature } from '@/components/feature'
+import { useStore } from '@/store/user'
+
+import { SetStateAction, useState } from 'react'
+
 import { Button } from '@/components/ui/button'
 import {
 	Dialog,
@@ -10,36 +15,36 @@ import {
 } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { useStore } from '@/store/user'
-import { FC, SetStateAction, useState } from 'react'
-import { Badge } from './ui/badge'
-type props = {
-	title: string
-}
-export const Feature: FC<props> = ({ title }) => {
-	const [jobValue, setJobValue] = useState<string>(title)
-	const { changeJob, deleteJob } = useStore()
+
+export default function ModalDialog() {
+	const [jobValue, setJobValue] = useState('')
+	const { job, setJob } = useStore()
 
 	function handleChange(e: { target: { value: SetStateAction<string> } }) {
 		setJobValue(e.target.value)
 	}
 	function handleSubmit() {
-		changeJob(title, jobValue)
+		setJob(jobValue)
 	}
-	function handleDelete() {
-		deleteJob(title)
-	}
+
+	console.log('render')
+
 	return (
-		<Badge className='m-[5px]' variant='outline'>
+		<div>
 			<Dialog>
 				<div className='flex'>
+					<div className='flex'>
+						{job.map(el => (
+							<Feature title={el} key={el} />
+						))}
+					</div>
 					<DialogTrigger asChild>
-						<h2 className='text-white cursor-pointer'>{title}</h2>
+						<Button variant='secondary'>Добавить</Button>
 					</DialogTrigger>
 				</div>
 				<DialogContent className='sm:max-w-[425px]'>
 					<DialogHeader>
-						<DialogTitle>Изменить</DialogTitle>
+						<DialogTitle>Добавить</DialogTitle>
 					</DialogHeader>
 					<div className='grid gap-4 py-4'>
 						<div className='grid grid-cols-4 items-center gap-4'>
@@ -54,18 +59,13 @@ export const Feature: FC<props> = ({ title }) => {
 							/>
 						</div>
 					</div>
-					<DialogFooter className='sm:justify-between'>
-						<DialogClose asChild>
-							<Button variant='destructive' onClick={handleDelete}>
-								Удалить
-							</Button>
-						</DialogClose>
+					<DialogFooter>
 						<DialogClose asChild>
 							<Button onClick={handleSubmit}>Сохранить</Button>
 						</DialogClose>
 					</DialogFooter>
 				</DialogContent>
 			</Dialog>
-		</Badge>
+		</div>
 	)
 }

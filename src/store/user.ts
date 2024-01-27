@@ -1,10 +1,10 @@
-import { TypeStore } from '../types/types'
 import { create } from 'zustand'
+import { TypeStore } from '../types/store'
 
 export const useStore = create<TypeStore>(set => ({
 	name: '',
 	setName: (name) => {
-		set({ name });
+		set({ name })
 		localStorage.setItem('name', name)
 	},
 	job: [],

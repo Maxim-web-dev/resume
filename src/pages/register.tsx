@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button'
 import axios from 'axios'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
-import { TypeForm } from '../types/types'
+import { TypeForm } from '../types/form'
 
 export default function Register() {
 	const {

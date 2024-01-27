@@ -1,34 +1,14 @@
-import { Feature } from '@/components/feature'
-import { useStore } from '@/store/user'
-
 import axios from 'axios'
-import { SetStateAction, memo, useEffect, useState } from 'react'
+import { memo, useEffect, useState } from 'react'
 
+import ModalDialog from '@/components/dialog'
 import { Button } from '@/components/ui/button'
-import {
-	Dialog,
-	DialogClose,
-	DialogContent,
-	DialogFooter,
-	DialogHeader,
-	DialogTitle,
-	DialogTrigger,
-} from '@/components/ui/dialog'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { TypeForm } from '@/types/types'
+import { useStore } from '@/store/user'
+import { TypeUser } from '../../types/user'
 
-export default function User() {
-	const [jobValue, setJobValue] = useState('')
-	const { job, setJob } = useStore()
-
-	function handleChange(e: { target: { value: SetStateAction<string> } }) {
-		setJobValue(e.target.value)
-	}
-	function handleSubmit() {
-		setJob(jobValue)
-	}
-	const [user, setUser] = useState<TypeForm>()
+export const User = memo(() => {
+	const [user, setUser] = useState<TypeUser>()
+	const { job } = useStore()
 
 	useEffect(() => {
 		async function getUser() {
@@ -40,55 +20,41 @@ export default function User() {
 					`https://65a02bdf7310aa1f8144b77c.mockapi.io/users?name=${name}&password=${password}`
 				)
 				setUser(response.data[0])
+				console.log(response.data[0].id);
+				
 			} catch (error) {
 				console.warn(error)
 			}
 		}
 		getUser()
 	}, [])
-	console.log('render');
-	
+
+	const handleSend = ():void => {
+		async function udpateUser() {
+			try {
+				await axios.put(
+					`https://65a02bdf7310aa1f8144b77c.mockapi.io/users/${user?.id}`,
+					{
+						about: {
+							job,
+						}
+					}
+				)
+			} catch (error) {
+				alert(error)
+			}
+		}
+		udpateUser()
+	}
 	return (
 		<div>
+			<Button variant='outline' onClick={handleSend}>
+				Сохранить резюме
+			</Button>
 			<h1 className='text-[#E2E8F0]'>
 				{user?.name ? user.name : 'Loading...'}
 			</h1>
-			<Dialog>
-				<div className='flex'>
-					{
-						job
-							.map(el => (
-								<Feature title={el} key={el} />
-							))
-					}
-					<DialogTrigger asChild>
-						<Button variant='secondary'>Добавить</Button>
-					</DialogTrigger>
-				</div>
-				<DialogContent className='sm:max-w-[425px]'>
-					<DialogHeader>
-						<DialogTitle>Добавить</DialogTitle>
-					</DialogHeader>
-					<div className='grid gap-4 py-4'>
-						<div className='grid grid-cols-4 items-center gap-4'>
-							<Label htmlFor='job' className='text-right'>
-								Дожность
-							</Label>
-							<Input
-								id='job'
-								className='col-span-3'
-								value={jobValue}
-								onChange={handleChange}
-							/>
-						</div>
-					</div>
-					<DialogFooter>
-						<DialogClose asChild>
-							<Button onClick={handleSubmit}>Сохранить</Button>
-						</DialogClose>
-					</DialogFooter>
-				</DialogContent>
-			</Dialog>
+			<ModalDialog />
 		</div>
 	)
-}
+})

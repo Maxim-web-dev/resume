@@ -1,7 +1,4 @@
-export type TypeForm = {
-	name: string,
-	password: string
-}
+
 export type TypeStore = {
 	name: string,
 	setName: (name: string) => void,
