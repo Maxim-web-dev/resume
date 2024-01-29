@@ -26,5 +26,15 @@ export const useStore = create<TypeStore>(set => ({
 		return {
 			job: filteredJobs
 		}
-	})
+	}),
+
+	location: '',
+	setLocation: (location) => {
+		set({ location })
+	},
+	deleteLocation: () => set({ location: ''}),
+
+	mail: '',
+	setMail: (mail) => set({ mail }),
+	deleteMail: () => set({ mail: '' }),
 }))

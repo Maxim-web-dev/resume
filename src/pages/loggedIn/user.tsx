@@ -1,14 +1,16 @@
 import axios from 'axios'
 import { memo, useEffect, useState } from 'react'
 
-import ModalDialog from '@/components/dialog'
+import JobDialog from '@/components/dialogs/job'
 import { Button } from '@/components/ui/button'
 import { useStore } from '@/store/user'
 import { TypeUser } from '../../types/user'
+import LocationDialog from '@/components/dialogs/location'
+import MailDialog from '@/components/dialogs/mail'
 
 export const User = memo(() => {
 	const [user, setUser] = useState<TypeUser>()
-	const { job } = useStore()
+	const { job, location, mail } = useStore()
 
 	useEffect(() => {
 		async function getUser() {
@@ -37,6 +39,8 @@ export const User = memo(() => {
 					{
 						about: {
 							job,
+							location,
+							mail
 						}
 					}
 				)
@@ -47,14 +51,16 @@ export const User = memo(() => {
 		udpateUser()
 	}
 	return (
-		<div>
+		<div className='flex flex-col justify-center items-center gap-[20px]'>
 			<Button variant='outline' onClick={handleSend}>
 				Сохранить резюме
 			</Button>
 			<h1 className='text-[#E2E8F0]'>
 				{user?.name ? user.name : 'Loading...'}
 			</h1>
-			<ModalDialog />
+			<JobDialog />
+			<LocationDialog />
+			<MailDialog />
 		</div>
 	)
 })
