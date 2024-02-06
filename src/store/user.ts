@@ -37,4 +37,8 @@ export const useStore = create<TypeStore>(set => ({
 	mail: '',
 	setMail: (mail) => set({ mail }),
 	deleteMail: () => set({ mail: '' }),
+
+	education: '',
+	setEducation: (education) => set({ education }),
+	deleteEducation: () => set({ education: ''})
 }))

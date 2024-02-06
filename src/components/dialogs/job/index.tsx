@@ -1,7 +1,7 @@
 import { Feature } from '@/components/dialogs/job/badge'
 import { useStore } from '@/store/user'
 
-import { SetStateAction, useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -17,17 +17,14 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 
 export default function JobDialog() {
-	const [jobValue, setJobValue] = useState('')
+	const [value, setValue] = useState('')
 	const { job, setJob } = useStore()
 
-	function handleChange(e: { target: { value: SetStateAction<string> } }) {
-		setJobValue(e.target.value)
+	const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+		e.preventDefault()
+		setValue(e.target.value)
 	}
-	function handleSubmit() {
-		setJob(jobValue)
-	}
-
-	console.log('render')
+	const onSubmit = ():void => setJob(value)
 
 	return (
 		<div>
@@ -56,14 +53,15 @@ export default function JobDialog() {
 							<Input
 								id='job'
 								className='col-span-3'
-								value={jobValue}
-								onChange={handleChange}
+								placeholder='Пример: middle frontend-разработчик'
+								value={value}
+								onChange={onChange}
 							/>
 						</div>
 					</div>
 					<DialogFooter>
 						<DialogClose asChild>
-							<Button onClick={handleSubmit}>Сохранить</Button>
+							<Button onClick={onSubmit}>Сохранить</Button>
 						</DialogClose>
 					</DialogFooter>
 				</DialogContent>

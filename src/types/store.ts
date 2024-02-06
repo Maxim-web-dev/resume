@@ -15,4 +15,8 @@ export type TypeStore = {
 	mail: string,
 	setMail: (mail: string) => void,
 	deleteMail: () => void,
+
+	education: string,
+	setEducation: (education: string) => void,
+	deleteEducation: () => void
 }

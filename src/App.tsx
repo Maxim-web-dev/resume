@@ -1,7 +1,7 @@
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
 
 import Layout from './layout/layout'
-import {User} from './pages/loggedIn/user'
+import { User } from './pages/loggedIn/user'
 import Register from './pages/register'
 import Start from './pages/start'
 import Error from './pages/error/error'

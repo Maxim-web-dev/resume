@@ -1,6 +1,6 @@
 import { useStore } from '@/store/user'
 
-import { SetStateAction, useState } from 'react'
+import { ChangeEvent, FC, SetStateAction, useState } from 'react'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -17,20 +17,19 @@ import { Label } from '@/components/ui/label'
 import { LocationBadge } from './badge'
 import { MapPin } from 'lucide-react';
 
-export default function LocationDialog() {
-	const [locationValue, setLocationValue] = useState('')
+export const LocationDialog: FC = () => {
+	const [ value, setValue ] = useState('')
 	const { location, setLocation } = useStore()
 
-	function handleChange(e: { target: { value: SetStateAction<string> } }) {
-		setLocationValue(e.target.value)
+	const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
+		e.preventDefault()
+		setValue(e.target.value)
 	}
-	function handleSubmit() {
-		setLocation(locationValue)
-	}
+	const handleSubmit = (): void => setLocation(value)
 
 	return (
 		<div className='flex items-center'>
-			<MapPin strokeWidth={1} color='white'/>
+			<MapPin strokeWidth={2} />
 			<Dialog>
 				<div className='flex'>
 					<div className='flex'>
@@ -58,7 +57,8 @@ export default function LocationDialog() {
 							<Input
 								id='job'
 								className='col-span-3'
-								value={locationValue}
+								placeholder='Пример: Москва'
+								value={value}
 								onChange={handleChange}
 							/>
 						</div>

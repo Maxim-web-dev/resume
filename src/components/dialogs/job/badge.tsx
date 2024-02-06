@@ -11,30 +11,29 @@ import {
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { useStore } from '@/store/user'
-import { FC, SetStateAction, useState } from 'react'
+import { ChangeEvent, FC, useState } from 'react'
 import { Badge } from '../../ui/badge'
+
 type props = {
 	title: string
 }
 export const Feature: FC<props> = ({ title }) => {
-	const [jobValue, setJobValue] = useState<string>(title)
+	const [value, setValue] = useState<string>(title)
 	const { changeJob, deleteJob } = useStore()
 
-	function handleChange(e: { target: { value: SetStateAction<string> } }) {
-		setJobValue(e.target.value)
+	const onChange = (e: ChangeEvent<HTMLInputElement>): void => {
+		e.preventDefault()
+		setValue(e.target.value)
 	}
-	function handleSubmit() {
-		changeJob(title, jobValue)
-	}
-	function handleDelete() {
-		deleteJob(title)
-	}
+	const onSubmit = (): void => changeJob(title, value)
+	const onDelete = (): void => deleteJob(title)
+
 	return (
 		<Badge className='m-[5px]' variant='outline'>
 			<Dialog>
 				<div className='flex'>
 					<DialogTrigger asChild>
-						<h2 className='text-white cursor-pointer'>{title}</h2>
+						<h2 className='cursor-pointer'>{title}</h2>
 					</DialogTrigger>
 				</div>
 				<DialogContent className='sm:max-w-[425px]'>
@@ -49,19 +48,20 @@ export const Feature: FC<props> = ({ title }) => {
 							<Input
 								id='job'
 								className='col-span-3'
-								value={jobValue}
-								onChange={handleChange}
+								placeholder='Пример: middle frontend-разработчик'
+								value={value}
+								onChange={onChange}
 							/>
 						</div>
 					</div>
 					<DialogFooter className='sm:justify-between'>
 						<DialogClose asChild>
-							<Button variant='destructive' onClick={handleDelete}>
+							<Button variant='destructive' onClick={onDelete}>
 								Удалить
 							</Button>
 						</DialogClose>
 						<DialogClose asChild>
-							<Button onClick={handleSubmit}>Сохранить</Button>
+							<Button onClick={onSubmit}>Сохранить</Button>
 						</DialogClose>
 					</DialogFooter>
 				</DialogContent>

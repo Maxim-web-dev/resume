@@ -5,12 +5,13 @@ import JobDialog from '@/components/dialogs/job'
 import { Button } from '@/components/ui/button'
 import { useStore } from '@/store/user'
 import { TypeUser } from '../../types/user'
-import LocationDialog from '@/components/dialogs/location'
+import { LocationDialog } from '@/components/dialogs/location'
 import MailDialog from '@/components/dialogs/mail'
+import { Education } from '@/components/dialogs/education'
 
 export const User = memo(() => {
 	const [user, setUser] = useState<TypeUser>()
-	const { job, location, mail } = useStore()
+	const { job, location, mail, education } = useStore()
 
 	useEffect(() => {
 		async function getUser() {
@@ -41,7 +42,8 @@ export const User = memo(() => {
 							job,
 							location,
 							mail
-						}
+						},
+						education
 					}
 				)
 			} catch (error) {
@@ -61,6 +63,8 @@ export const User = memo(() => {
 			<JobDialog />
 			<LocationDialog />
 			<MailDialog />
+			<hr className='border-[#334155] w-full'/>
+			<Education />
 		</div>
 	)
 })

@@ -1,6 +1,6 @@
 import { useStore } from '@/store/user'
 
-import { SetStateAction, useState } from 'react'
+import { ChangeEvent, SetStateAction, useState } from 'react'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -14,23 +14,23 @@ import {
 } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { Badge } from '@/components/ui/badge'
 import { MailBadge } from './badge'
 import { Mail } from 'lucide-react';
 
 export default function MailDialog() {
-	const [mailValue, setMailValue] = useState('')
+	const [value, setValue] = useState('')
 	const { mail, setMail } = useStore()
 
-	function handleChange(e: { target: { value: SetStateAction<string> } }) {
-		setMailValue(e.target.value)
+	const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
+		e.preventDefault()
+		setValue(e.target.value)
 	}
-	function handleSubmit() {
-		setMail(mailValue)
-	}
+	const handleSubmit = (): void => setMail(value)
 
 	return (
-		<div className='flex items-center'>
-			<Mail strokeWidth={2} fill='white'/>
+		<div className='flex items-center gap-[7px]'>
+			<Mail strokeWidth={2} />
 			<Dialog>
 				<div className='flex'>
 					<div className='flex'>
@@ -38,9 +38,9 @@ export default function MailDialog() {
 					</div>
 					{mail.length === 0 ? (
 						<DialogTrigger asChild>
-							<Button variant='secondary'>
-								Почта
-							</Button>
+							<Badge variant='default' className='cursor-pointer'>
+								{ mail ? mail : 'Не указано'}
+							</Badge>
 						</DialogTrigger>
 					) : (
 						''
@@ -52,14 +52,15 @@ export default function MailDialog() {
 					</DialogHeader>
 					<div className='grid gap-4 py-4'>
 						<div className='grid grid-cols-4 items-center gap-4'>
-							<Label htmlFor='job' className='text-right'>
+							<Label htmlFor='input' className='text-right'>
 								Почта
 							</Label>
 							<Input
-								id='mail'
+								id='input'
 								type='email'
 								className='col-span-3'
-								value={mailValue}
+								placeholder='Пример: user@gmail.com'
+								value={value}
 								onChange={handleChange}
 							/>
 						</div>

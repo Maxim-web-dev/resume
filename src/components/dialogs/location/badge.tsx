@@ -11,30 +11,28 @@ import {
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { useStore } from '@/store/user'
-import { FC, SetStateAction, useState } from 'react'
+import { ChangeEvent, FC, useState } from 'react'
 
 interface props {
 	title: string
-} 
-export const LocationBadge: FC<props> = ({title}) => {
+}
+export const LocationBadge: FC<props> = ({ title }) => {
 	const [locationValue, setLocationValue] = useState<string>(title)
-	const { setLocation, deleteLocation } = useStore()
-	
-	function handleChange(e: { target: { value: SetStateAction<string> } }) {
+	const { location, setLocation, deleteLocation } = useStore()
+
+	const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
+		e.preventDefault()
 		setLocationValue(e.target.value)
 	}
-	function handleSubmit() {
-		setLocation(locationValue)
-	}
-	function handleDelete() {
-		deleteLocation()
-	}
+	const handleSubmit = (): void => setLocation(locationValue)
+	const handleDelete = (): void => deleteLocation()
+
 	return (
 		<div className='flex'>
 			<Dialog>
 				<div className='flex'>
 					<DialogTrigger asChild>
-						<h2 className='text-white cursor-pointer'>{title}</h2>
+						<h2 className='cursor-pointer'>{title}</h2>
 					</DialogTrigger>
 				</div>
 				<DialogContent className='sm:max-w-[425px]'>
@@ -49,6 +47,7 @@ export const LocationBadge: FC<props> = ({title}) => {
 							<Input
 								id='location'
 								className='col-span-3'
+								placeholder='Пример: Москва'
 								value={locationValue}
 								onChange={handleChange}
 							/>

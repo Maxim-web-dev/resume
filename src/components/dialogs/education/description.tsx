@@ -8,30 +8,32 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from '@/components/ui/dialog'
-import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { useStore } from '@/store/user'
 import { ChangeEvent, FC, useState } from 'react'
+import { Badge } from '../../ui/badge'
+import { Textarea } from '@/components/ui/textarea'
+import { useStore } from '@/store/user'
 
-interface props {
+type props = {
 	title: string
-} 
-export const MailBadge: FC<props> = ({title}) => {
-	const [value, setValue] = useState<string>(title)
-	const { setMail, deleteMail } = useStore()
-	
-	const handleChange = (e: ChangeEvent<HTMLInputElement>) => setValue(e.target.value)
-	const handleSubmit = (): void => setMail(value)
-	const handleDelete = (): void => {
-		deleteMail()
+}
+export const Description: FC<props> = ({ title }) => {
+	const { setEducation, deleteEducation } = useStore()
+
+	const [ value, setValue ] = useState<string>(title)
+
+	const onChange = (e: ChangeEvent<HTMLTextAreaElement>): void => setValue(e.target.value) 
+	const onSubmit = (): void => setEducation(value)
+	const onDelete = (): void => {
+		deleteEducation()
 		setValue('')
 	}
 	return (
-		<div className='flex'>
+		<Badge className='m-[5px]' variant='outline'>
 			<Dialog>
 				<div className='flex'>
 					<DialogTrigger asChild>
-						<h2 className='cursor-pointer'>{title}</h2>
+						<h2 className='text-black cursor-pointer'>{title ? title : 'Не указано'}</h2>
 					</DialogTrigger>
 				</div>
 				<DialogContent className='sm:max-w-[425px]'>
@@ -40,31 +42,30 @@ export const MailBadge: FC<props> = ({title}) => {
 					</DialogHeader>
 					<div className='grid gap-4 py-4'>
 						<div className='grid grid-cols-4 items-center gap-4'>
-							<Label htmlFor='mail' className='text-right'>
-								Локация
+							<Label htmlFor='text' className='text-right'>
+								Образование
 							</Label>
-							<Input
-								id='mail'
-								type='email'
+							<Textarea
+								id='text'
 								className='col-span-3'
-								placeholder='Пример: user@gmail.com'
+								placeholder='Пример: прошел курсы от Яндекс.'
 								value={value}
-								onChange={handleChange}
+								onChange={onChange}
 							/>
 						</div>
 					</div>
 					<DialogFooter className='sm:justify-between'>
 						<DialogClose asChild>
-							<Button variant='destructive' onClick={handleDelete}>
+							<Button variant='destructive' onClick={onDelete}>
 								Удалить
 							</Button>
 						</DialogClose>
 						<DialogClose asChild>
-							<Button onClick={handleSubmit}>Сохранить</Button>
+							<Button onClick={onSubmit}>Сохранить</Button>
 						</DialogClose>
 					</DialogFooter>
 				</DialogContent>
 			</Dialog>
-		</div>
+		</Badge>
 	)
 }
