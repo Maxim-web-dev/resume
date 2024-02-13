@@ -8,6 +8,7 @@ import { TypeUser } from '../../types/user'
 import { LocationDialog } from '@/components/dialogs/location'
 import MailDialog from '@/components/dialogs/mail'
 import { Education } from '@/components/dialogs/education'
+import { Experience } from '@/components/dialogs/experience'
 
 export const User = memo(() => {
 	const [user, setUser] = useState<TypeUser>()
@@ -23,8 +24,6 @@ export const User = memo(() => {
 					`https://65a02bdf7310aa1f8144b77c.mockapi.io/users?name=${name}&password=${password}`
 				)
 				setUser(response.data[0])
-				console.log(response.data[0].id);
-				
 			} catch (error) {
 				console.warn(error)
 			}
@@ -65,6 +64,8 @@ export const User = memo(() => {
 			<MailDialog />
 			<hr className='border-[#334155] w-full'/>
 			<Education />
+			<hr className='border-[#334155] w-full'/>
+			<Experience />
 		</div>
 	)
 })

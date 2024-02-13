@@ -18,7 +18,7 @@ interface props {
 }
 export const LocationBadge: FC<props> = ({ title }) => {
 	const [locationValue, setLocationValue] = useState<string>(title)
-	const { location, setLocation, deleteLocation } = useStore()
+	const { setLocation, deleteLocation } = useStore()
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
 		e.preventDefault()

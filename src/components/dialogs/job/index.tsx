@@ -24,48 +24,46 @@ export default function JobDialog() {
 		e.preventDefault()
 		setValue(e.target.value)
 	}
-	const onSubmit = ():void => setJob(value)
+	const onSubmit = (): void => setJob(value)
 
 	return (
-		<div>
-			<Dialog>
+		<Dialog>
+			<div className='flex'>
 				<div className='flex'>
-					<div className='flex'>
-						{job.map(el => (
-							<Feature title={el} key={el} />
-						))}
-					</div>
-					<DialogTrigger asChild>
-						<Button variant='secondary'>
-							{job.length === 0 ? 'Работа' : 'Добавить'}
-						</Button>
-					</DialogTrigger>
+					{job.map((el, index) => (
+						<Feature title={el} key={index} />
+					))}
 				</div>
-				<DialogContent className='sm:max-w-[425px]'>
-					<DialogHeader>
-						<DialogTitle>Добавить</DialogTitle>
-					</DialogHeader>
-					<div className='grid gap-4 py-4'>
-						<div className='grid grid-cols-4 items-center gap-4'>
-							<Label htmlFor='job' className='text-right'>
-								Дожность
-							</Label>
-							<Input
-								id='job'
-								className='col-span-3'
-								placeholder='Пример: middle frontend-разработчик'
-								value={value}
-								onChange={onChange}
-							/>
-						</div>
+				<DialogTrigger asChild>
+					<Button variant='secondary'>
+						{job.length === 0 ? 'Работа' : 'Добавить'}
+					</Button>
+				</DialogTrigger>
+			</div>
+			<DialogContent className='sm:max-w-[425px]'>
+				<DialogHeader>
+					<DialogTitle>Добавить</DialogTitle>
+				</DialogHeader>
+				<div className='grid gap-4 py-4'>
+					<div className='grid grid-cols-4 items-center gap-4'>
+						<Label htmlFor='job' className='text-right'>
+							Дожность
+						</Label>
+						<Input
+							id='job'
+							className='col-span-3'
+							placeholder='Пример: middle frontend-разработчик'
+							value={value}
+							onChange={onChange}
+						/>
 					</div>
-					<DialogFooter>
-						<DialogClose asChild>
-							<Button onClick={onSubmit}>Сохранить</Button>
-						</DialogClose>
-					</DialogFooter>
-				</DialogContent>
-			</Dialog>
-		</div>
+				</div>
+				<DialogFooter>
+					<DialogClose asChild>
+						<Button onClick={onSubmit}>Сохранить</Button>
+					</DialogClose>
+				</DialogFooter>
+			</DialogContent>
+		</Dialog>
 	)
 }

@@ -1,6 +1,6 @@
 import { useStore } from '@/store/user'
 
-import { ChangeEvent, SetStateAction, useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 
 import { Button } from '@/components/ui/button'
 import {
