@@ -1,10 +1,48 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
+import App from './app/App.tsx'
 import './index.css'
 
+export * from '@/app/types/form.ts'
+export * from '@/app/types/user.ts'
+export * from '@/components/education/index.tsx'
+export * from '@/components/experience/controlPanel/index.tsx'
+export * from '@/components/experience/dialogs/place.tsx'
+export * from '@/components/experience/dialogs/problems.tsx'
+export * from '@/components/experience/dialogs/tools.tsx'
+export * from '@/components/experience/index.tsx'
+export * from '@/components/experience/items/place/index.tsx'
+export * from '@/components/experience/items/problems.tsx'
+export * from '@/components/experience/items/tools.tsx'
+export * from '@/components/job/badge.tsx'
+export * from '@/components/job/index.tsx'
+export * from '@/components/location/badge.tsx'
+export * from '@/components/location/index.tsx'
+export * from '@/components/name/index.tsx'
+export * from '@/pages/about'
+export * from '@/pages/auth/login/ui'
+export * from '@/pages/auth/register/ui'
+export * from '@/pages/error'
+export * from '@/pages/layout/index.tsx'
+export * from '@/pages/start'
+export * from '@/pages/user/admin/ui'
+export * from '@/processes/auth/requireAuth.tsx'
+export * from '@/shared/svg/location.tsx'
+export * from '@/shared/svg/mail.tsx'
+export * from './app/store/user.ts'
+export * from './components/mail/badge.tsx'
+export * from './components/mail/index.tsx'
+export * from './shared/shadcn/badge.tsx'
+export * from './shared/shadcn/button.tsx'
+export * from './shared/shadcn/dialog.tsx'
+export * from './shared/shadcn/input.tsx'
+export * from './shared/shadcn/label.tsx'
+export * from './shared/shadcn/skeleton.tsx'
+export * from './shared/shadcn/textarea.tsx'
+export * from './shared/shadcn/tooltip.tsx'
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+	<React.StrictMode>
+		<App />
+	</React.StrictMode>
 )
