@@ -18,7 +18,7 @@ import { Separator } from '@/shared/shadcn/separator'
 
 export const User: FC = () => {
 	const [isLoading, setLoading] = useState(false)
-	const { set } = useStore()
+	const { setAdminUser } = useStore()
 
 	useEffect(() => {
 		const getUser = async () => {
@@ -30,7 +30,7 @@ export const User: FC = () => {
 				const response = await axios.get<TypeUser[]>(
 					`https://65a02bdf7310aa1f8144b77c.mockapi.io/users?id=${id}`
 				)
-				set(response.data[0])
+				setAdminUser(response.data[0])
 				setLoading(true)
 			} catch (error) {
 				console.error(error)

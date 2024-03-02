@@ -2,13 +2,27 @@ import { create } from 'zustand'
 import { TypeStore } from '../types/store'
 
 export const useStore = create<TypeStore>(set => ({
-	set: (data) => set({
+	setAdminUser: (data) => set({
 		name: data.name,
-		job: data.about?.job,
-		location: data.about?.location,
-		mail: data.about?.mail,
+		job: data.about.job,
+		location: data.about.location,
+		mail: data.about.mail,
 		education: data.education,
 		experience: data.experience
+	}),
+	viewName: '',
+	viewJob: [],
+	viewLocation: '',
+	viewMail: '',
+	viewEducation: [],
+	viewExperience: [],
+	setViewUser: (data) => set({
+		viewName: data.name,
+		viewJob: data.about.job,
+		viewLocation: data.about.location,
+		viewMail: data.about.mail,
+		viewEducation: data.education,
+		viewExperience: data.experience
 	}),
 	name: '',
 	setName: (name) => {

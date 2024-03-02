@@ -6,15 +6,16 @@ import {
 	createRoutesFromElements,
 } from 'react-router-dom'
 
-import { 
+import {
 	Error,
 	Layout,
-	Login, 
-	Register, 
-	Start, 
+	Login,
+	Register,
+	Start,
 	User,
 	RequireAuth,
-	About 
+	About,
+	View,
 } from '@/main'
 
 const App: FC = () => {
@@ -22,11 +23,17 @@ const App: FC = () => {
 		createRoutesFromElements(
 			<Route path='/' element={<Layout />} errorElement={<Error />}>
 				<Route index element={<Start />} />
-				<Route path='user' element={
-					<RequireAuth>
-						<User />
-					</RequireAuth>
-				} />
+				<Route path='user'>
+				<Route
+					path='admin'
+					element={
+						<RequireAuth>
+							<User />
+						</RequireAuth>
+					}
+				/>
+					<Route path='view/:id' element={<View />} />
+				</Route>
 				<Route path='register' element={<Register />} />
 				<Route path='login' element={<Login />} />
 				<Route path='about' element={<About />} />

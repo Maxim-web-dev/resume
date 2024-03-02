@@ -24,7 +24,7 @@ export const Login: FC = () => {
 				`https://65a02bdf7310aa1f8144b77c.mockapi.io/users?name=${data.name}&password=${data.password}`
 			)
 			localStorage.setItem('id', response.data[0].id)
-			navigate('/user')
+			navigate('/user/admin')
 		} catch (error) {
 			console.error(error)
 			toast.error('Похоже пользователя не существует', { duration: 3000 })

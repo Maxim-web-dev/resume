@@ -1,4 +1,4 @@
-type exp = {
+type experience = {
 	place: string,
 	tools: string[],
 	description: string[]
@@ -11,9 +11,17 @@ type TypeData = {
 		mail: string,
 	}
 	education: string[],
-	experience: exp[],
+	experience: experience[],
 }
 export type TypeStore = {
+	setAdminUser: (data: TypeData) => void,
+	setViewUser: (data: TypeData) => void,
+	viewName: string,
+	viewJob: string[],
+	viewLocation: string,
+	viewMail: string,
+	viewEducation: string[],
+	viewExperience: experience[],
 	name: string,
 	setName: (name: string) => void,
 
@@ -35,7 +43,7 @@ export type TypeStore = {
 	changeEducation: (id: number, text: string) => void
 	deleteEducation: (id: number) => void,
 
-	experience: exp[],
+	experience: experience[],
 	addExperience: () => void,
 	deleteExperience: (id: number) => void,
 	addPlace: (place: string, id: number) => void,
@@ -47,5 +55,4 @@ export type TypeStore = {
 	addProblem: (id: number, problem: string) => void,
 	changeProblem: (id: number, problem: string, index: number) => void,
 	deleteProblem: (id: number, index: number) => void,
-	set: (data: TypeData) => void,
 }
