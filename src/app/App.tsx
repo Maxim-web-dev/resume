@@ -17,21 +17,21 @@ import {
 	About,
 	View,
 } from '@/main'
-
+import { ThemeProvider } from '@/components/theme/theme-provider'
 const App: FC = () => {
 	const router = createBrowserRouter(
 		createRoutesFromElements(
 			<Route path='/' element={<Layout />} errorElement={<Error />}>
 				<Route index element={<Start />} />
 				<Route path='user'>
-				<Route
-					path='admin'
-					element={
-						<RequireAuth>
-							<User />
-						</RequireAuth>
-					}
-				/>
+					<Route
+						path='admin'
+						element={
+							<RequireAuth>
+								<User />
+							</RequireAuth>
+						}
+					/>
 					<Route path='view/:id' element={<View />} />
 				</Route>
 				<Route path='register' element={<Register />} />
@@ -40,6 +40,10 @@ const App: FC = () => {
 			</Route>
 		)
 	)
-	return <RouterProvider router={router} />
+	return (
+		<ThemeProvider defaultTheme='dark' storageKey='vite-ui-theme'>
+			<RouterProvider router={router} />
+		</ThemeProvider>
+	)
 }
 export default App

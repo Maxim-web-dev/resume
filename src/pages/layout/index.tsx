@@ -2,6 +2,7 @@ import { GanttChartSquare } from 'lucide-react'
 import { FC } from 'react'
 import { Link, Outlet } from 'react-router-dom'
 import style from './layout.module.css'
+import { Toaster } from 'sonner'
 
 export const Layout: FC = () => {
 	return (
@@ -13,6 +14,7 @@ export const Layout: FC = () => {
 				</Link>
 			</div>
 			<Outlet />
+			<Toaster position='top-center' richColors />
 		</>
 	)
 }

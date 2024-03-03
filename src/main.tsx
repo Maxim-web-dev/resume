@@ -41,6 +41,10 @@ export * from '@/shared/shadcn/skeleton.tsx'
 export * from '@/shared/shadcn/textarea.tsx'
 export * from '@/shared/shadcn/tooltip.tsx'
 export * from '@/pages/user/guest/view/ui/index.tsx'
+export * from '@/components/guest/educationCard/index.tsx'
+export * from '@/components/guest/experienceCard/index.tsx'
+export * from '@/components/theme/mode-toggle'
+export * from '@/components/guest/bioCard/BioCard.tsx'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>
