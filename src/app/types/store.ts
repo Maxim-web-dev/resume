@@ -1,3 +1,5 @@
+import { TypeUser } from './user'
+
 type experience = {
 	place: string,
 	tools: string[],
@@ -14,7 +16,7 @@ type TypeData = {
 	experience: experience[],
 }
 export type TypeStore = {
-	setAdminUser: (data: TypeData) => void,
+	setAdminUser: (data: TypeUser) => void,
 	setViewUser: (data: TypeData) => void,
 	viewName: string,
 	viewJob: string[],
@@ -40,19 +42,19 @@ export type TypeStore = {
 
 	education: string[],
 	addEducation: (text: string) => void,
-	changeEducation: (id: number, text: string) => void
-	deleteEducation: (id: number) => void,
+	changeEducation: (indexOfCard: number, text: string) => void
+	deleteEducation: (indexOfCard: number) => void,
 
 	experience: experience[],
 	addExperience: () => void,
-	deleteExperience: (id: number) => void,
-	addPlace: (place: string, id: number) => void,
-	changePlace: (place: string, id: number) => void,
-	deletePlace: (id: number) => void,
-	addTool: (id: number, tool: string) => void,
-	changeTool: (id: number, tool: string, index: number) => void,
-	deleteTool: (id: number, index: number) => void,
-	addProblem: (id: number, problem: string) => void,
-	changeProblem: (id: number, problem: string, index: number) => void,
-	deleteProblem: (id: number, index: number) => void,
+	deleteExperience: (indexOfCard: number) => void,
+	addPlace: (place: string, indexOfCard: number) => void,
+	changePlace: (place: string, indexOfCard: number) => void,
+	deletePlace: (indexOfCard: number) => void,
+	addTool: (indexOfCard: number, tool: string) => void,
+	changeTool: (indexOfCard: number, tool: string, indexOfElement: number) => void,
+	deleteTool: (indexOfCard: number, indexOfElement: number) => void,
+	addProblem: (indexOfCard: number, problem: string) => void,
+	changeProblem: (indexOfCard: number, problem: string, indexOfElement: number) => void,
+	deleteProblem: (indexOfCard: number, indexOfElement: number) => void,
 }

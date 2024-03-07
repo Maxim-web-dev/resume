@@ -8,13 +8,12 @@ import {
 	DialogHeader,
 	DialogTitle,
 	DialogTrigger,
-	Input,
 	Label,
 	Button,
 	// Custom
 	useStore,
+	Textarea,
 } from '@/main'
-import style from './controlPanel.module.css'
 
 interface props {
 	text: string
@@ -24,7 +23,7 @@ export const ControlPanel: FC<props> = ({ text, id }) => {
 	const [value, setValue] = useState<string>(text)
 	const { changeEducation, deleteEducation } = useStore()
 
-	const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
+	const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) =>
 		setValue(e.target.value)
 
 	const handleSubmit = () => changeEducation(id, value)
@@ -36,9 +35,7 @@ export const ControlPanel: FC<props> = ({ text, id }) => {
 	return (
 		<Dialog>
 			<DialogTrigger asChild>
-				<div className={style.div}>
-					<p className={style.text}>{text}</p>
-				</div>
+				<p className='cursor-pointer'>{text}</p>
 			</DialogTrigger>
 			<DialogContent className='sm:max-w-[425px]'>
 				<DialogHeader>
@@ -49,7 +46,7 @@ export const ControlPanel: FC<props> = ({ text, id }) => {
 						<Label htmlFor='input' className='text-right'>
 							Обучение
 						</Label>
-						<Input
+						<Textarea
 							id='input'
 							className='col-span-3'
 							placeholder='Пример: прошел курсы от Яндекс'

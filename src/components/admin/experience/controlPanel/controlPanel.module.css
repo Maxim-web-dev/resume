@@ -1,8 +1,0 @@
-.div {
-	@apply bg-[#282b3a] text-white rounded-xl min-h-[15vh] flex flex-col p-6 relative;
-	width: calc(50% - 0.75rem);
-	word-wrap: break-word;
-}
-.button {
-	@apply cursor-pointer rounded-xl top-0 right-0 absolute bg-red-500 p-2;
-}

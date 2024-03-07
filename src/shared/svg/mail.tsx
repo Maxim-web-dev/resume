@@ -18,4 +18,3 @@ export const MailSVG = () => {
 		</svg>
 	)
 }
-// export default MailSVG

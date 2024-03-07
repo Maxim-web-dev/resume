@@ -2,6 +2,12 @@ import { create } from 'zustand'
 import { TypeStore } from '../types/store'
 
 export const useStore = create<TypeStore>(set => ({
+	viewName: '',
+	viewJob: [],
+	viewLocation: '',
+	viewMail: '',
+	viewEducation: [],
+	viewExperience: [],
 	setAdminUser: (data) => set({
 		name: data.name,
 		job: data.about.job,
@@ -10,12 +16,6 @@ export const useStore = create<TypeStore>(set => ({
 		education: data.education,
 		experience: data.experience
 	}),
-	viewName: '',
-	viewJob: [],
-	viewLocation: '',
-	viewMail: '',
-	viewEducation: [],
-	viewExperience: [],
 	setViewUser: (data) => set({
 		viewName: data.name,
 		viewJob: data.about.job,
@@ -65,15 +65,15 @@ export const useStore = create<TypeStore>(set => ({
 			education: [...state.education, text]
 		}
 	}),
-	changeEducation: (id, text) => set(state => {
+	changeEducation: (indexOfCard, text) => set(state => {
 		const education = [...state.education]
-		education[id] = text
+		education[indexOfCard] = text
 		return {
 			education: education
 		}
 	}),
-	deleteEducation: (id) => set(state => {
-		const education = state.education.filter((_, index) => index !== id)
+	deleteEducation: (indexOfCard) => set(state => {
+		const education = state.education.filter((_, index) => index !== indexOfCard)
 		return {
 			education: education
 		}
@@ -97,80 +97,81 @@ export const useStore = create<TypeStore>(set => ({
 			experience: experience
 		}
 	}),
-	deleteExperience: (id) => set(state => {
-		const filteredExperience = state.experience.filter((_, index) =>
-			index !== id
-		)
+	deleteExperience: (indexOfCard) => set(state => {
+		const filteredExperience = state.experience.filter((_, index) => index !== indexOfCard)
+
 		return {
 			experience: filteredExperience
 		}
 	}),
-	addPlace: (place, id) => set(state => {
+	addPlace: (place, indexOfCard) => set(state => {
 		const experience = [...state.experience]
-		experience[id].place = place
-		return {
-			experience: experience
-		}
-	}),
-	changePlace: (place, id) => set(state => {
-		const experience = [...state.experience]
-		experience[id].place = place
-		return {
-			experience: experience
-		}
-	}),
-	deletePlace: (id) => set(state => {
-		const experience = [...state.experience]
-		experience[id].place = ''
-		return {
-			experience: experience
-		}
-	}),
-	addTool: (id, tool) => set(state => {
-		const experience = [...state.experience]
-		experience[id].tools = [...experience[id].tools, tool]
-		console.log(experience)
+		experience[indexOfCard].place = place
 
 		return {
 			experience: experience
 		}
 	}),
-	changeTool: (id, tool, index) => set(state => {
+	changePlace: (place, indexOfCard) => set(state => {
 		const experience = [...state.experience]
-		experience[id].tools[index] = tool
-		return {
-			experience: experience
-		}
-	}),
-	deleteTool: (id, index) => set(state => {
-		const experience = [...state.experience]
-		experience[id].tools.splice(index, 1)
-		return {
-			experience: experience
-		}
-	}),
-	addProblem: (id, problem) => set(state => {
-		const experience = [...state.experience]
-		experience[id].description = [...experience[id].description, problem]
-		console.log(experience)
-		return {
-			experience: experience
-		}
-	}),
-	changeProblem: (id, problem, index) => set(state => {
-		const experience = [...state.experience]
-		experience[id].description[index] = problem
-		console.log(experience)
-		console.log(problem)
+		experience[indexOfCard].place = place
 
 		return {
 			experience: experience
 		}
 	}),
-	deleteProblem: (id, index) => set(state => {
+	deletePlace: (indexOfCard) => set(state => {
 		const experience = [...state.experience]
-		experience[id].description.splice(index, 1)
-		console.log(experience)
+		experience[indexOfCard].place = ''
+
+		return {
+			experience: experience
+		}
+	}),
+	addTool: (indexOfCard, tool) => set(state => {
+		const experience = [...state.experience]
+		experience[indexOfCard].tools = [...experience[indexOfCard].tools, tool]
+
+		return {
+			experience: experience
+		}
+	}),
+	changeTool: (indexOfCard, tool, indexOfElement) => set(state => {
+		const experience = [...state.experience]
+		experience[indexOfCard].tools[indexOfElement] = tool
+
+		return {
+			experience: experience
+		}
+	}),
+	deleteTool: (indexOfCard, indexOfElement) => set(state => {
+		const experience = [...state.experience]
+		experience[indexOfCard].tools.splice(indexOfElement, 1)
+
+		return {
+			experience: experience
+		}
+	}),
+	addProblem: (indexOfCard, problem) => set(state => {
+		const experience = [...state.experience]
+		experience[indexOfCard].description = [...experience[indexOfCard].description, problem]
+
+		return {
+			experience: experience
+		}
+	}),
+	changeProblem: (indexOfCard, problem, indexOfElement) => set(state => {
+		const experience = [...state.experience]
+		experience[indexOfCard].description[indexOfElement] = problem
+
+		return {
+			experience: experience
+		}
+	}),
+	deleteProblem: (indexOfCard, indexOfElement) => set(state => {
+		const experience = [...state.experience]
+		experience[indexOfCard].description.splice(indexOfElement, 1)
+
 		return {
 			experience: experience
 		}

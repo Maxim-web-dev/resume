@@ -7,17 +7,17 @@ import {
 } from 'react-router-dom'
 
 import {
+	About,
 	Error,
 	Layout,
 	Login,
 	Register,
+	RequireAuth,
 	Start,
 	User,
-	RequireAuth,
-	About,
 	View,
 } from '@/main'
-import { ThemeProvider } from '@/components/theme/theme-provider'
+import { ThemeProvider } from '@/shared/theme/theme-provider'
 const App: FC = () => {
 	const router = createBrowserRouter(
 		createRoutesFromElements(

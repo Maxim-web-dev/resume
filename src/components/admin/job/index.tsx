@@ -15,7 +15,6 @@ import {
 	useStore,
 	JobBadge,
 } from '@/main'
-import { Briefcase } from 'lucide-react'
 
 export const JobDialog: FC = () => {
 	const [value, setValue] = useState('')
@@ -29,18 +28,17 @@ export const JobDialog: FC = () => {
 
 	return (
 		<Dialog>
-			<div className='flex items-center'>
+			<div className='flex items-center justify-center'>
 				<div className='flex items-center gap-1'>
-					<Briefcase color='white' />
 					{job?.map((el, index) => (
 						<JobBadge title={el} id={index} key={index} />
 					))}
 				</div>
 				<DialogTrigger asChild>
 					{job?.length < 3 && (
-						<Badge variant='secondary' className='h-full mx-2'>
-							{job.length === 0 ? 'Работа' : 'Добавить'}
-						</Badge>
+						<div className='inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-normal transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 hover:bg-secondary/80 cursor-pointer ml-2'>
+							{job?.length ? 'Добавить' : 'Работа'}
+						</div>
 					)}
 				</DialogTrigger>
 			</div>

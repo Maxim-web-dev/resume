@@ -1,62 +1,56 @@
 import { FC, useEffect, useState } from 'react'
-import axios from 'axios'
 
-import {
-	Education,
-	Experience,
-	JobDialog,
-	useStore,
-	TypeUser,
-	NameDialog,
-	MailDialog,
-	LocationDialog,
-} from '@/main'
+import { Education, Experience, useStore, ModeToggle, Button } from '@/main'
+
+import { getUser } from '../api'
 import style from './user.module.css'
-import { SaveResumeButton } from './buttons/saveResume'
-import { LogOutButton } from './buttons/logOut'
-import { Separator } from '@/shared/shadcn/separator'
+import { BioCard } from '@/components/admin/Cards/bioCard'
+import { Account } from '../../../../shared/buttons/account'
 
 export const User: FC = () => {
 	const [isLoading, setLoading] = useState(false)
 	const { setAdminUser } = useStore()
 
 	useEffect(() => {
-		const getUser = async () => {
+		const getUserAndSetData = async () => {
 			try {
-				const id: string | null = localStorage.getItem('id')
-				if (!id) {
-					throw new Error('Id not found in localStorage')
-				}
-				const response = await axios.get<TypeUser[]>(
-					`https://65a02bdf7310aa1f8144b77c.mockapi.io/users?id=${id}`
-				)
-				setAdminUser(response.data[0])
+				const response = await getUser()
+				response && setAdminUser(response)
 				setLoading(true)
 			} catch (error) {
 				console.error(error)
 			}
 		}
-		getUser()
+		getUserAndSetData()
 	}, [])
 	return (
+		// <div className={style.wrapper}>
+		// 	<div className={style.modeToggle}>
+		// 		<ModeToggle />
+		// 	</div>
+		// 	<div className={style.account}>
+		// 		<Account />
+		// 	</div>
+		// 	<BioCard />
+		// 	<Education />
+		// 	<Experience />
+		// </div>
 		<div className={style.wrapper}>
-			<header className='flex flex-col items-center justify-center gap-[2vh] '>
-				<div className='flex items-center gap-2'>
-					<NameDialog />
-					<LogOutButton />
+			<div className={style.modeToggle}>
+				<ModeToggle />
+			</div>
+			<div className={style.account}>
+				<Account />
+			</div>
+			<BioCard />
+			<div className='flex gap-6 w-full'>
+				<div className='flex flex-col w-[50%]'>
+					<Education />
 				</div>
-				<SaveResumeButton />
-				<JobDialog />
-				<div className='flex gap-10 mb-4'>
-					<LocationDialog />
-					<MailDialog />
+				<div className='w-[50%]'>
+					<Experience />
 				</div>
-			</header>
-			<main className='flex flex-col gap-4'>
-				<Education />
-				<Experience />
-			</main>
-			<footer></footer>
+			</div>
 		</div>
 	)
 }

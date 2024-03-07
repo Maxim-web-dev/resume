@@ -5,7 +5,6 @@ import { Link, useNavigate } from 'react-router-dom'
 import { TypeForm } from '@/main'
 import { registUser } from '../api'
 import style from './register.module.css'
-import { GanttChartSquare } from 'lucide-react'
 
 export const Register: FC = () => {
 	const {

@@ -12,6 +12,7 @@ import {
 	Button,
 	//custom
 	useStore,
+	Badge,
 } from '@/main'
 
 export const AddButton: FC = () => {
@@ -28,9 +29,9 @@ export const AddButton: FC = () => {
 	return (
 		<Dialog>
 			<DialogTrigger asChild>
-				<button className='bg-[#242634] p-2 rounded-xl inline-flex items-center'>
-					+
-				</button>
+				<Badge variant='outline' className='inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-normal transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 hover:bg-secondary/80 cursor-pointer ml-2'>
+					Добавить
+				</Badge>
 			</DialogTrigger>
 			<DialogContent className='sm:max-w-[425px]'>
 				<DialogHeader>
@@ -51,7 +52,7 @@ export const AddButton: FC = () => {
 						/>
 					</div>
 				</div>
-				<DialogFooter className='sm:justify-between'>
+				<DialogFooter>
 					<DialogClose asChild>
 						<Button onClick={onSubmit}>Сохранить</Button>
 					</DialogClose>

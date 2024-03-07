@@ -7,38 +7,46 @@ import {
 	DialogHeader,
 	DialogTitle,
 	DialogTrigger,
-	Input,
-	Badge,
 	Button,
+	Input,
 	Label,
 	//custom
 	useStore,
+	Badge,
 } from '@/main'
 
 interface props {
-	tool: string
-	id: number
-	index: number
+	indexOfCard: number
 }
 
-export const ToolItem: FC<props> = ({ tool, id, index }) => {
-	const [value, setValue] = useState<string>(tool)
-	const { changeTool, deleteTool } = useStore()
+export const PlaceItem: FC<props> = ({ indexOfCard }) => {
+	const { experience, changePlace, deletePlace } = useStore()
+
+	const [value, setValue] = useState<string>(experience[indexOfCard].place)
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
 		e.preventDefault()
 		setValue(e.target.value)
 	}
-	const onDelete = (): void => deleteTool(id, index)
-	const onChange = (): void => changeTool(id, value, index)
+	const onChange = () => changePlace(value, indexOfCard)
+	const onDelete = () => deletePlace(indexOfCard)
+
 	// против ошибок (без этого в некоторых случаях некорректно отображалось value в Input)
-	useEffect(() => {
-		setValue(tool)
-	}, [tool])
+	useEffect(() => setValue(experience[indexOfCard].place), [experience[indexOfCard].place])
+
 	return (
 		<Dialog>
-			<DialogTrigger asChild id='trigger'>
-				<Badge className='text-sm'>{tool}</Badge>
+			<DialogTrigger asChild>
+				{experience[indexOfCard].place ? (
+					<p className='cursor-pointer'>{experience[indexOfCard].place}</p>
+				) : (
+					<Badge
+						variant='outline'
+						className='inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-normal transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 hover:bg-secondary/80 cursor-pointer'
+					>
+						Добавить
+					</Badge>
+				)}
 			</DialogTrigger>
 			<DialogContent className='sm:max-w-[425px]'>
 				<DialogHeader>
@@ -47,12 +55,12 @@ export const ToolItem: FC<props> = ({ tool, id, index }) => {
 				<div className='grid gap-4 py-4'>
 					<div className='grid grid-cols-4 items-center gap-4'>
 						<Label htmlFor='place' className='text-right'>
-							Технология
+							Место работы
 						</Label>
 						<Input
 							id='place'
 							className='col-span-3'
-							placeholder='Пример: JavaScript'
+							placeholder='Пример: Яндекс'
 							onChange={handleChange}
 							value={value}
 						/>

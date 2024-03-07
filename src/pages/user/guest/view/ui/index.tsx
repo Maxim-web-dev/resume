@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { getUser } from '../api'
 import { useStore, ViewExperience, ViewEducation, BioCard, ModeToggle } from '@/main'
 import style from './viewUser.module.css'
+import { Account } from '@/shared/buttons/account'
 
 export const View: FC = () => {
 	const { id } = useParams()
@@ -24,6 +25,9 @@ export const View: FC = () => {
 		<div className={style.wrapper}>
 			<div className={style.modeToggle}>
 				<ModeToggle />
+			</div>
+			<div className={style.account}>
+				<Account />
 			</div>
 			<BioCard />
 			<div className='flex gap-6 w-full'>

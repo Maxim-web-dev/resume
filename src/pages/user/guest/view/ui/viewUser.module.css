@@ -22,5 +22,11 @@
 .modeToggle {
 	position: absolute;
 	top: 30px;
+	right: 75px;
+}
+
+.account {
+	position: absolute;
+	top: 30px;
 	right: 30px;
 }
