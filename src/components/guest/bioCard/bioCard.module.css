@@ -1,0 +1,11 @@
+.viewName {
+	background-image: linear-gradient(to right, #d8ae5e, #3a82f7);
+	font-family: 'Inter', sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 900;
+	font-size: 34px;
+	font-style: normal;
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}

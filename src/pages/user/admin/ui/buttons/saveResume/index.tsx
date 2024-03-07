@@ -2,7 +2,7 @@ import { useStore } from '@/app/store/user'
 import axios from 'axios'
 import { FC } from 'react'
 import style from './saveResume.module.css'
-import { Toaster, toast } from 'sonner'
+import { toast } from 'sonner'
 
 export const SaveResumeButton: FC = () => {
 	const { job, location, mail, education, experience } = useStore()
@@ -29,11 +29,8 @@ export const SaveResumeButton: FC = () => {
 		}
 	}
 	return (
-		<>
-			<button onClick={udpateUser} className={style.button}>
-				Сохранить резюме
-			</button>
-			<Toaster position='top-center' richColors />
-		</>
+		<button onClick={udpateUser} className={style.button}>
+			Сохранить резюме
+		</button>
 	)
 }

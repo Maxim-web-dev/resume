@@ -1,10 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Lexend:wght@100..900&display=swap');
+
 .wrapper {
-	padding: 15vh;
+	padding: 8vh 15vh 15vh 15vh;
 	width: 100vw;
 	min-height: 100vh;
-	background: radial-gradient(50% 75% at 0% -25%, #0b1935 0%, #02040E 100%);
 	display: flex;
+	gap: 5vh;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+
+	background: radial-gradient(
+		50% 75% at 0% -25%,
+		var(--background-gradient) 0%,
+		#00000000 100%
+	);
+	background-color: hsl(var(--background));
+	color: hsl(var(--foreground));
+}
+
+.modeToggle {
+	position: absolute;
+	top: 30px;
+	right: 75px;
+}
+
+.account {
+	position: absolute;
+	top: 30px;
+	right: 30px;
 }
