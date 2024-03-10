@@ -12,11 +12,10 @@ import {
 	Button,
 	//custom
 	useStore,
-	Badge,
 } from '@/main'
 
 export const AddButton: FC = () => {
-	const { addEducation } = useStore()
+	const { education, addEducation } = useStore()
 	const [text, setText] = useState<string>('')
 
 	const onChange = (e: ChangeEvent<HTMLTextAreaElement>) =>
@@ -29,9 +28,13 @@ export const AddButton: FC = () => {
 	return (
 		<Dialog>
 			<DialogTrigger asChild>
-				<Badge variant='outline' className='inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-normal transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 hover:bg-secondary/80 cursor-pointer ml-2'>
-					Добавить
-				</Badge>
+				{education.length < 4 && (
+					<div
+						className='inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-normal transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 hover:bg-secondary/80 cursor-pointer ml-2'
+					>
+						Добавить
+					</div>
+				)}
 			</DialogTrigger>
 			<DialogContent className='sm:max-w-[425px]'>
 				<DialogHeader>

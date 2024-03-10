@@ -9,7 +9,6 @@ import {
 	DialogTrigger,
 	Button,
 	Input,
-	Badge,
 	Label,
 	//custom
 	useStore,

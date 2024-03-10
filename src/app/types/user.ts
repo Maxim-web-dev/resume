@@ -3,6 +3,11 @@ type TypeExperience = {
 	tools: string[],
 	description: string[]
 }
+type TypeProjects = {
+	name: string,
+	description: string,
+	link: string
+}
 export type TypeUser = {
 	id: number,
 	name: string,
@@ -13,5 +18,6 @@ export type TypeUser = {
 		mail: string
 	},
 	education: string[],
-	experience: TypeExperience[]
+	experience: TypeExperience[],
+	projects: TypeProjects[],
 }

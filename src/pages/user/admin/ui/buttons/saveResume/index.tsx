@@ -3,9 +3,10 @@ import axios from 'axios'
 import { FC } from 'react'
 import style from './saveResume.module.css'
 import { toast } from 'sonner'
+import { Button } from '@/main'
 
 export const SaveResumeButton: FC = () => {
-	const { job, location, mail, education, experience } = useStore()
+	const { job, location, mail, education, experience, projects } = useStore()
 
 	const udpateUser = async () => {
 		const id: string | null = localStorage.getItem('id')
@@ -20,6 +21,7 @@ export const SaveResumeButton: FC = () => {
 					},
 					education,
 					experience,
+					projects,
 				}
 			)
 			toast.success('Резюме успешно сохранено', { duration: 3000 })
@@ -29,8 +31,8 @@ export const SaveResumeButton: FC = () => {
 		}
 	}
 	return (
-		<button onClick={udpateUser} className={style.button}>
-			Сохранить резюме
-		</button>
+		<Button onClick={udpateUser} className='absolute top-[30px] right-[120px]'>
+			Сохранить
+		</Button>
 	)
 }

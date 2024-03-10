@@ -5,6 +5,11 @@ type experience = {
 	tools: string[],
 	description: string[]
 }
+type projects = {
+	name: string,
+	description: string,
+	link: string
+}
 type TypeData = {
 	name: string,
 	about: {
@@ -14,6 +19,7 @@ type TypeData = {
 	}
 	education: string[],
 	experience: experience[],
+	projects: projects[]
 }
 export type TypeStore = {
 	setAdminUser: (data: TypeUser) => void,
@@ -24,6 +30,8 @@ export type TypeStore = {
 	viewMail: string,
 	viewEducation: string[],
 	viewExperience: experience[],
+	viewProjects: projects[]
+
 	name: string,
 	setName: (name: string) => void,
 
@@ -57,4 +65,14 @@ export type TypeStore = {
 	addProblem: (indexOfCard: number, problem: string) => void,
 	changeProblem: (indexOfCard: number, problem: string, indexOfElement: number) => void,
 	deleteProblem: (indexOfCard: number, indexOfElement: number) => void,
+
+	projects: projects[],
+	setNameOfProject: (name: string, indexOfCard: number) => void,
+	deleteNameOfProject: (indexOfCard: number) => void,
+	setDescriptionOfProject: (description: string, indexOfCard: number) => void,
+	deleteDescriptionOfProject: (indexOfCard: number) => void,
+	setLinkOfProject: (link: string, indexOfCard: number) => void,
+	deleteLinkOfProject: (indexOfCard: number) => void,
+	addProject: () => void,
+	deleteProject: (indexOfCard: number) => void
 }

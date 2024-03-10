@@ -1,9 +1,16 @@
 import { FC, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { getUser } from '../api'
-import { useStore, ViewExperience, ViewEducation, BioCard, ModeToggle } from '@/main'
+import {
+	useStore,
+	ViewExperience,
+	ViewEducation,
+	BioCard,
+	ModeToggle,
+} from '@/main'
 import style from './viewUser.module.css'
 import { Account } from '@/shared/buttons/account'
+import { ViewProjects } from '@/components/guest/projects'
 
 export const View: FC = () => {
 	const { id } = useParams()
@@ -31,8 +38,9 @@ export const View: FC = () => {
 			</div>
 			<BioCard />
 			<div className='flex gap-6 w-full'>
-				<div className='flex flex-col w-[50%]'>
+				<div className='flex flex-col w-[50%] gap-6'>
 					<ViewEducation />
+					<ViewProjects />
 				</div>
 				<div className='w-[50%]'>
 					<ViewExperience />

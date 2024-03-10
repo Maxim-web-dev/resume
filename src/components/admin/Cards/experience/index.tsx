@@ -1,5 +1,5 @@
-import { Button, ProblemItem, ToolItem, useStore } from '@/main'
-import { FC, MouseEventHandler } from 'react'
+import { ProblemItem, ToolItem, useStore } from '@/main'
+import { FC } from 'react'
 import {
 	Card,
 	CardContent,
@@ -13,14 +13,11 @@ import { PlaceItem } from './items/place'
 import { AddToolButton } from './buttons/addTool'
 import { AddProblemButton } from './buttons/addProblem'
 import { AddExperience } from './buttons/addExperience'
-import { Trash } from 'lucide-react'
+import { DeleteExperience } from './buttons/deleteExperience'
 
 export const Experience: FC = () => {
-	const { experience, deleteExperience } = useStore()
+	const { experience } = useStore()
 
-	const deleteCard = (indexOfCard: number): void => {
-		deleteExperience(indexOfCard)
-	}
 	return (
 		<Card className='flex flex-col gap-7 p-6'>
 			<CardTitle>
@@ -29,19 +26,10 @@ export const Experience: FC = () => {
 			</CardTitle>
 			{experience.map((_, indexOfCard) => (
 				<Card key={indexOfCard} className='flex flex-col gap-6 relative'>
-					<Button
-						onClick={() => deleteCard(indexOfCard)}
-						variant='destructive'
-						size='icon'
-						className='absolute top-2 right-2'
-					>
-						<Trash size={17} />
-					</Button>
+					<DeleteExperience indexOfCard={indexOfCard} />
 					<CardHeader>
 						<div className='flex items-center gap-2'>
-							<CardDescription>
-								<p>Место работы</p>
-							</CardDescription>
+							<CardDescription>Место работы</CardDescription>
 							<PlaceItem indexOfCard={indexOfCard} />
 						</div>
 					</CardHeader>

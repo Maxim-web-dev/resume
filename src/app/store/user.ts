@@ -8,13 +8,15 @@ export const useStore = create<TypeStore>(set => ({
 	viewMail: '',
 	viewEducation: [],
 	viewExperience: [],
+	viewProjects: [],
 	setAdminUser: (data) => set({
 		name: data.name,
 		job: data.about.job,
 		location: data.about.location,
 		mail: data.about.mail,
 		education: data.education,
-		experience: data.experience
+		experience: data.experience,
+		projects: data.projects
 	}),
 	setViewUser: (data) => set({
 		viewName: data.name,
@@ -22,7 +24,8 @@ export const useStore = create<TypeStore>(set => ({
 		viewLocation: data.about.location,
 		viewMail: data.about.mail,
 		viewEducation: data.education,
-		viewExperience: data.experience
+		viewExperience: data.experience,
+		viewProjects: data.projects
 	}),
 	name: '',
 	setName: (name) => {
@@ -176,4 +179,64 @@ export const useStore = create<TypeStore>(set => ({
 			experience: experience
 		}
 	}),
+
+	projects: [],
+	addProject: () => set(state => {
+		const project = {
+			name: '',
+			description: '',
+			link: ''
+		}
+		return {
+			projects: [...state.projects, project]
+		}
+	}),
+	deleteProject: (indexOfCard) => set(state => {
+		const filteredProjects = state.projects.filter((_, index) => index !== indexOfCard)
+		return {
+			projects: filteredProjects
+		}
+	}),
+	setNameOfProject: (name, indexOfCard) => set(state => {
+		const projects = [...state.projects]
+		projects[indexOfCard].name = name
+		return {
+			projects
+		}
+	}),
+	deleteNameOfProject: (indexOfCard) => set(state => {
+		const projects = [...state.projects]
+		projects[indexOfCard].name = ''
+		return {
+			projects
+		}
+	}),
+	setDescriptionOfProject: (description, indexOfCard) => set(state => {
+		const projects = [...state.projects]
+		projects[indexOfCard].description = description
+		return {
+			projects
+		}
+	}),
+	deleteDescriptionOfProject: (indexOfCard) => set(state => {
+		const projects = [...state.projects]
+		projects[indexOfCard].description = ''
+		return {
+			projects
+		}
+	}),
+	setLinkOfProject: (link, indexOfCard) => set(state => {
+		const projects = [...state.projects]
+		projects[indexOfCard].link = link
+		return {
+			projects
+		}
+	}),
+	deleteLinkOfProject: (indexOfCard) => set(state => {
+		const projects = [...state.projects]
+		projects[indexOfCard].link = ''
+		return {
+			projects
+		}
+	})
 }))

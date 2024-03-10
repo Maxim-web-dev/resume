@@ -11,10 +11,12 @@ export const Education: FC = () => {
 	return (
 		<Card>
 			<CardHeader>
-				<CardTitle>Обучение{education.length < 4 && <AddButton />}</CardTitle>
+				<CardTitle>
+					Обучение <AddButton />
+				</CardTitle>
 			</CardHeader>
-			<CardContent className='flex flex-col gap-8'>
-				{education.map((value, index) => (
+			{education.map((value, index) => (
+				<CardContent className='flex flex-col gap-8' key={index}>
 					<div
 						key={index}
 						className='mb-0 grid grid-cols-[25px_1fr] items-center pb-4 last:mb-0 last:pb-0'
@@ -24,8 +26,8 @@ export const Education: FC = () => {
 						<CalendarIcon className='ml-6' />
 						<p className='ml-5'>09.2022 - 01.2023</p>
 					</div>
-				))}
-			</CardContent>
+				</CardContent>
+			))}
 		</Card>
 	)
 }

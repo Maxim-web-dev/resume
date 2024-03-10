@@ -12,40 +12,41 @@ import {
 	Label,
 	//custom
 	useStore,
-	Badge,
 } from '@/main'
+import { Link2Icon } from '@radix-ui/react-icons'
 
 interface props {
 	indexOfCard: number
 }
 
-export const PlaceItem: FC<props> = ({ indexOfCard }) => {
-	const { experience, changePlace, deletePlace } = useStore()
+export const LinkItem: FC<props> = ({ indexOfCard }) => {
+	const { projects, setLinkOfProject, deleteLinkOfProject } = useStore()
 
-	const [value, setValue] = useState<string>(experience[indexOfCard].place)
+	const [link, setLink] = useState(projects[indexOfCard].link)
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
 		e.preventDefault()
-		setValue(e.target.value)
+		setLink(e.target.value)
 	}
-	const onChange = () => changePlace(value, indexOfCard)
-	const onDelete = () => deletePlace(indexOfCard)
+	const handleSubmit = () => setLinkOfProject(link, indexOfCard)
+	const handleDelete = () => deleteLinkOfProject(indexOfCard)
 
 	// против ошибок (без этого в некоторых случаях некорректно отображалось value в Input)
-	useEffect(() => setValue(experience[indexOfCard].place), [experience[indexOfCard].place])
+	useEffect(
+		() => setLink(projects[indexOfCard].link),
+		[projects[indexOfCard].link]
+	)
 
 	return (
 		<Dialog>
 			<DialogTrigger asChild>
-				{experience[indexOfCard].place ? (
-					<p className='cursor-pointer'>{experience[indexOfCard].place}</p>
-				) : (
-					<Badge
-						variant='outline'
-						className='inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-normal transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 hover:bg-secondary/80 cursor-pointer'
-					>
-						Добавить
-					</Badge>
+				{projects[indexOfCard].link && (
+					<div className='flex items-center gap-1'>
+						<Link2Icon />
+						<p className='cursor-pointer text-sm bg-gradient-to-r from-[#D8AE5E] to-[#3A82F7] bg-no-repeat bg-[length:85%_4px] bg-left-bottom'>
+							{projects[indexOfCard].link}
+						</p>
+					</div>
 				)}
 			</DialogTrigger>
 			<DialogContent className='sm:max-w-[425px]'>
@@ -54,26 +55,25 @@ export const PlaceItem: FC<props> = ({ indexOfCard }) => {
 				</DialogHeader>
 				<div className='grid gap-4 py-4'>
 					<div className='grid grid-cols-4 items-center gap-4'>
-						<Label htmlFor='place' className='text-right'>
-							Место работы
+						<Label htmlFor='input' className='text-right'>
+							Название
 						</Label>
 						<Input
-							id='place'
+							id='input'
 							className='col-span-3'
-							placeholder='Пример: Яндекс'
 							onChange={handleChange}
-							value={value}
+							value={link}
 						/>
 					</div>
 				</div>
 				<DialogFooter className='sm:justify-between'>
 					<DialogClose asChild>
-						<Button variant='destructive' onClick={onDelete}>
+						<Button variant='destructive' onClick={handleDelete}>
 							Удалить
 						</Button>
 					</DialogClose>
 					<DialogClose asChild>
-						<Button onClick={onChange}>Сохранить</Button>
+						<Button onClick={handleSubmit}>Сохранить</Button>
 					</DialogClose>
 				</DialogFooter>
 			</DialogContent>

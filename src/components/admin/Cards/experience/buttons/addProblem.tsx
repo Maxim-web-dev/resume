@@ -12,7 +12,6 @@ import {
 	Label,
 	//custom
 	useStore,
-	Badge,
 } from '@/main'
 
 interface props {
@@ -37,9 +36,9 @@ export const AddProblemButton: FC<props> = ({ id }) => {
 		<Dialog>
 			<DialogTrigger asChild>
 				{experience[id]?.description?.length < 4 && (
-					<Badge variant='outline' className='inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-normal transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 hover:bg-secondary/80 cursor-pointer ml-2'>
+					<div className='inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-normal transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 hover:bg-secondary/80 cursor-pointer ml-2'>
 					Добавить
-				</Badge>
+				</div>
 				)}
 			</DialogTrigger>
 			<DialogContent className='sm:max-w-[425px]'>
