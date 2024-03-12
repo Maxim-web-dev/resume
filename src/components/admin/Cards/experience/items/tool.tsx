@@ -38,10 +38,10 @@ export const ToolItem: FC<props> = ({ id, index }) => {
 	)
 	return (
 		<Dialog>
-			<DialogTrigger asChild id='trigger'>
-				<p className='inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-normal transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 hover:bg-secondary/80 cursor-pointer'>
+			<DialogTrigger asChild>
+				<div className='inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-normal transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 hover:bg-secondary/80 cursor-pointer'>
 					{experience[id]?.tools[index]}
-				</p>
+				</div>
 			</DialogTrigger>
 			<DialogContent className='sm:max-w-[425px]'>
 				<DialogHeader>

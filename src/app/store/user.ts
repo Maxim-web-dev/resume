@@ -9,6 +9,7 @@ export const useStore = create<TypeStore>(set => ({
 	viewEducation: [],
 	viewExperience: [],
 	viewProjects: [],
+	viewSkills: [],
 	setAdminUser: (data) => set({
 		name: data.name,
 		job: data.about.job,
@@ -16,7 +17,8 @@ export const useStore = create<TypeStore>(set => ({
 		mail: data.about.mail,
 		education: data.education,
 		experience: data.experience,
-		projects: data.projects
+		projects: data.projects,
+		skills: data.skills
 	}),
 	setViewUser: (data) => set({
 		viewName: data.name,
@@ -25,7 +27,8 @@ export const useStore = create<TypeStore>(set => ({
 		viewMail: data.about.mail,
 		viewEducation: data.education,
 		viewExperience: data.experience,
-		viewProjects: data.projects
+		viewProjects: data.projects,
+		viewSkills: data.skills
 	}),
 	name: '',
 	setName: (name) => {
@@ -238,5 +241,31 @@ export const useStore = create<TypeStore>(set => ({
 		return {
 			projects
 		}
-	})
+	}),
+
+	skills: [],
+	addSkill: (name, level) => set(state => {
+		const skill = {
+			name,
+			level
+		}
+		return {
+			skills: [...state.skills, skill]
+		}
+	}),
+	changeSkill: (name, level, indexOfSkill) => set(state => {
+		const skills = [...state.skills]
+		skills[indexOfSkill].name = name
+		skills[indexOfSkill].level = level
+		return {
+			skills
+		}
+	}),
+	deleteSkill: (indexOfCard) => set(state => {
+		const filteredSkills = state.skills.filter((_, index) => index !== indexOfCard)
+		return {
+			skills: filteredSkills
+		}
+	}),
+
 }))

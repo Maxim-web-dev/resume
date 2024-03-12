@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from 'react'
 
-import { Education, Experience, useStore, ModeToggle, Button } from '@/main'
+import { Education, Experience, useStore, ModeToggle } from '@/main'
 
 import { getUser } from '../api'
 import style from './user.module.css'
@@ -8,6 +8,7 @@ import { BioCard } from '@/components/admin/Cards/bio'
 import { Account } from '../../../../shared/buttons/account'
 import { Projects } from '@/components/admin/Cards/projects'
 import { SaveResumeButton } from './buttons/saveResume'
+import { Skills } from '@/components/admin/Cards/skills'
 
 export const User: FC = () => {
 	const [isLoading, setLoading] = useState(false)
@@ -38,6 +39,7 @@ export const User: FC = () => {
 				<div className='flex flex-col gap-6 w-[50%]'>
 					<Education />
 					<Projects />
+					<Skills />
 				</div>
 				<div className='w-[50%]'>
 					<Experience />

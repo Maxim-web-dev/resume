@@ -10,6 +10,10 @@ type projects = {
 	description: string,
 	link: string
 }
+type skills = {
+	name: string,
+	level: number
+}
 type TypeData = {
 	name: string,
 	about: {
@@ -19,7 +23,8 @@ type TypeData = {
 	}
 	education: string[],
 	experience: experience[],
-	projects: projects[]
+	projects: projects[],
+	skills: skills[]
 }
 export type TypeStore = {
 	setAdminUser: (data: TypeUser) => void,
@@ -30,7 +35,8 @@ export type TypeStore = {
 	viewMail: string,
 	viewEducation: string[],
 	viewExperience: experience[],
-	viewProjects: projects[]
+	viewProjects: projects[],
+	viewSkills: skills[],
 
 	name: string,
 	setName: (name: string) => void,
@@ -74,5 +80,10 @@ export type TypeStore = {
 	setLinkOfProject: (link: string, indexOfCard: number) => void,
 	deleteLinkOfProject: (indexOfCard: number) => void,
 	addProject: () => void,
-	deleteProject: (indexOfCard: number) => void
+	deleteProject: (indexOfCard: number) => void,
+
+	skills: skills[],
+	addSkill: (name: string, level: number) => void,
+	changeSkill: (name: string, level: number, indexOfSkill: number) => void,
+	deleteSkill: (indexOfSkill: number) => void,
 }

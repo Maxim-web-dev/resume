@@ -11,6 +11,7 @@ import {
 import style from './viewUser.module.css'
 import { Account } from '@/shared/buttons/account'
 import { ViewProjects } from '@/components/guest/projects'
+import { ViewSkills } from '@/components/guest/skillsCard'
 
 export const View: FC = () => {
 	const { id } = useParams()
@@ -41,6 +42,7 @@ export const View: FC = () => {
 				<div className='flex flex-col w-[50%] gap-6'>
 					<ViewEducation />
 					<ViewProjects />
+					<ViewSkills />
 				</div>
 				<div className='w-[50%]'>
 					<ViewExperience />
