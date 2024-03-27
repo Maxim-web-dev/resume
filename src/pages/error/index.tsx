@@ -9,7 +9,7 @@ export const Error: FC = () => {
 			<h1>Ошибка!</h1>
 			<h2>Страница не существует</h2>
 			<Button>
-				<Link to='/'>Вернуться на главную</Link>
+				<Link to='/resume'>Вернуться на главную</Link>
 			</Button>
 		</div>
 	)
