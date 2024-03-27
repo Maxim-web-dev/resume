@@ -34,9 +34,9 @@ const App: FC = () => {
 					/>
 					<Route path='view/:id' element={<View />} />
 				</Route>
-				<Route path='register' element={<Register />} />
-				<Route path='login' element={<Login />} />
-				<Route path='about' element={<About />} />
+				<Route path='/resume/register' element={<Register />} />
+				<Route path='/resume/login' element={<Login />} />
+				<Route path='/resume/about' element={<About />} />
 			</Route>
 		)
 	)
