@@ -1,14 +1,14 @@
 import { FC, useEffect, useState } from 'react'
 
-import { Education, Experience, useStore, ModeToggle } from '@/main'
+import { Education, Experience, ModeToggle, useStore } from '@/main'
 
-import { getUser } from '../api'
-import style from './user.module.css'
 import { BioCard } from '@/components/admin/Cards/bio'
-import { Account } from '../../../../shared/buttons/account'
 import { Projects } from '@/components/admin/Cards/projects'
-import { SaveResumeButton } from './buttons/saveResume'
 import { Skills } from '@/components/admin/Cards/skills'
+import { Account } from '../../../../shared/buttons/account'
+import { getUser } from '../api'
+import { SaveResumeButton } from './saveButton/ui'
+import style from './user.module.css'
 
 export const User: FC = () => {
 	const [isLoading, setLoading] = useState(false)
@@ -19,6 +19,7 @@ export const User: FC = () => {
 			try {
 				const response = await getUser()
 				response && setAdminUser(response)
+				console.log(response)
 				setLoading(true)
 			} catch (error) {
 				console.error(error)
@@ -26,6 +27,8 @@ export const User: FC = () => {
 		}
 		getUserAndSetData()
 	}, [])
+	console.log(isLoading);
+	
 	return (
 		<div className={style.wrapper}>
 			<div className={style.modeToggle}>

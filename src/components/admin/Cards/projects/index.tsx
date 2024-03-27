@@ -1,5 +1,4 @@
 import { useStore } from '@/main'
-import { FC } from 'react'
 import {
 	Card,
 	CardContent,
@@ -7,17 +6,19 @@ import {
 	CardHeader,
 	CardTitle,
 } from '@/shared/shadcn/card'
-import { AddButton } from './buttons/addProject'
-import { DeleteButton } from './buttons/deleteButton'
-import { AddNameButton } from './buttons/addName'
+import { FC } from 'react'
 import { AddDescriptionButton } from './buttons/addDescription'
 import { AddLinkButton } from './buttons/addLink'
-import { NameItem } from './items/name'
+import { AddNameButton } from './buttons/addName'
+import { AddButton } from './buttons/addProject'
+import { DeleteButton } from './buttons/deleteButton'
 import { DescriptionItem } from './items/description'
 import { LinkItem } from './items/link'
+import { NameItem } from './items/name'
 
 export const Projects: FC = () => {
 	const { projects } = useStore()
+	console.log(projects)
 
 	return (
 		<Card className='flex flex-col gap-7 p-6'>
@@ -25,7 +26,7 @@ export const Projects: FC = () => {
 				Проекты
 				<AddButton />
 			</CardTitle>
-			{projects.map((_, indexOfCard) => (
+			{projects?.map((_, indexOfCard) => (
 				<Card key={indexOfCard} className='flex flex-col gap-6 relative'>
 					<DeleteButton indexOfCard={indexOfCard} />
 					<CardHeader>

@@ -8,15 +8,16 @@ import {
 	CardHeader,
 	CardTitle,
 } from '@/shared/shadcn/card'
-import { CalendarIcon } from '@radix-ui/react-icons'
 import { PlaceItem } from './items/place'
 import { AddToolButton } from './buttons/addTool'
 import { AddProblemButton } from './buttons/addProblem'
 import { AddExperience } from './buttons/addExperience'
 import { DeleteExperience } from './buttons/deleteExperience'
+import { DatePicker } from './buttons/datePicker'
 
 export const Experience: FC = () => {
 	const { experience } = useStore()
+	console.log(experience)
 
 	return (
 		<Card className='flex flex-col gap-7 p-6'>
@@ -24,7 +25,7 @@ export const Experience: FC = () => {
 				Опыт
 				<AddExperience />
 			</CardTitle>
-			{experience.map((_, indexOfCard) => (
+			{experience?.map((_, indexOfCard) => (
 				<Card key={indexOfCard} className='flex flex-col gap-6 relative'>
 					<DeleteExperience indexOfCard={indexOfCard} />
 					<CardHeader>
@@ -70,8 +71,7 @@ export const Experience: FC = () => {
 						))}
 					</CardContent>
 					<CardFooter>
-						<CalendarIcon />
-						<p className='ml-1'>09.2022 - 01.2023</p>
+						<DatePicker indexOfExperience={indexOfCard}/>
 					</CardFooter>
 				</Card>
 			))}

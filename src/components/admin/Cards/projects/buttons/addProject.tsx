@@ -4,10 +4,10 @@ import { FC } from 'react'
 
 export const AddButton: FC = () => {
 	const { projects, addProject } = useStore()
-
+	
 	return (
 		<>
-			{projects.length < 4 && (
+			{projects?.length < 4 || !projects ? (
 				<div
 					onClick={() => {
 						addProject()
@@ -16,7 +16,7 @@ export const AddButton: FC = () => {
 				>
 					Добавить
 				</div>
-			)}
+			): ''}
 		</>
 	)
 }

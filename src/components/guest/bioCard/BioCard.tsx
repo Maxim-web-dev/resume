@@ -22,7 +22,7 @@ export const BioCard: FC = () => {
 					<CardDescription key={index}>{value}</CardDescription>
 				))}
 			</CardHeader>
-			<CardContent className='flex gap-5 flex-wrap justify-between'>
+			<CardContent className={` ${viewMail || viewLocation ? '' : 'p-0'} flex gap-5 flex-wrap justify-between`}>
 				<p>{viewLocation}</p>
 				<p>{viewMail}</p>
 			</CardContent>

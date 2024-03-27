@@ -1,19 +1,6 @@
+import { TypeEducationElement, TypeExperienceElement, TypeProjectElement, TypeSkillElement } from './elementsOfUser'
 import { TypeUser } from './user'
 
-type experience = {
-	place: string,
-	tools: string[],
-	description: string[]
-}
-type projects = {
-	name: string,
-	description: string,
-	link: string
-}
-type skills = {
-	name: string,
-	level: number
-}
 type TypeData = {
 	name: string,
 	about: {
@@ -21,11 +8,17 @@ type TypeData = {
 		location: string,
 		mail: string,
 	}
-	education: string[],
-	experience: experience[],
-	projects: projects[],
-	skills: skills[]
+	education: TypeEducationElement[],
+	experience: TypeExperienceElement[],
+	projects: TypeProjectElement[],
+	skills: TypeSkillElement[]
 }
+
+type TypeDateFormat = {
+	from: Date,
+	to: Date
+}
+
 export type TypeStore = {
 	setAdminUser: (data: TypeUser) => void,
 	setViewUser: (data: TypeData) => void,
@@ -33,10 +26,10 @@ export type TypeStore = {
 	viewJob: string[],
 	viewLocation: string,
 	viewMail: string,
-	viewEducation: string[],
-	viewExperience: experience[],
-	viewProjects: projects[],
-	viewSkills: skills[],
+	viewEducation: TypeEducationElement[],
+	viewExperience: TypeExperienceElement[],
+	viewProjects: TypeProjectElement[],
+	viewSkills: TypeSkillElement[],
 
 	name: string,
 	setName: (name: string) => void,
@@ -54,12 +47,13 @@ export type TypeStore = {
 	setMail: (mail?: string) => void,
 	deleteMail: () => void,
 
-	education: string[],
+	education: TypeEducationElement[],
 	addEducation: (text: string) => void,
 	changeEducation: (indexOfCard: number, text: string) => void
 	deleteEducation: (indexOfCard: number) => void,
+	setDateEducation: (indexOfCard: number, date: TypeDateFormat) => void,
 
-	experience: experience[],
+	experience: TypeExperienceElement[],
 	addExperience: () => void,
 	deleteExperience: (indexOfCard: number) => void,
 	addPlace: (place: string, indexOfCard: number) => void,
@@ -71,8 +65,9 @@ export type TypeStore = {
 	addProblem: (indexOfCard: number, problem: string) => void,
 	changeProblem: (indexOfCard: number, problem: string, indexOfElement: number) => void,
 	deleteProblem: (indexOfCard: number, indexOfElement: number) => void,
+	setDateExperience: (indexOfCard: number, date: TypeDateFormat) => void,
 
-	projects: projects[],
+	projects: TypeProjectElement[],
 	setNameOfProject: (name: string, indexOfCard: number) => void,
 	deleteNameOfProject: (indexOfCard: number) => void,
 	setDescriptionOfProject: (description: string, indexOfCard: number) => void,
@@ -82,7 +77,7 @@ export type TypeStore = {
 	addProject: () => void,
 	deleteProject: (indexOfCard: number) => void,
 
-	skills: skills[],
+	skills: TypeSkillElement[],
 	addSkill: (name: string, level: number) => void,
 	changeSkill: (name: string, level: number, indexOfSkill: number) => void,
 	deleteSkill: (indexOfSkill: number) => void,

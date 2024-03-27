@@ -1,32 +1,37 @@
 import { FC } from 'react'
 import { AddButton } from './buttons/addButton'
 import { useStore } from '@/main'
-import { Card, CardContent, CardHeader, CardTitle } from '@/shared/shadcn/card'
+import {
+	Card,
+	CardFooter,
+	CardHeader,
+	CardTitle,
+} from '@/shared/shadcn/card'
 import { ControlPanel } from './controlPanel'
-import { CalendarIcon } from '@radix-ui/react-icons'
+import { DatePicker } from './buttons/datePicker'
+import { DeleteEducation } from './buttons/deleteButton'
 
 export const Education: FC = () => {
 	const { education } = useStore()
 
 	return (
-		<Card>
-			<CardHeader>
-				<CardTitle>
-					Обучение <AddButton />
-				</CardTitle>
-			</CardHeader>
-			{education.map((value, index) => (
-				<CardContent className='flex flex-col gap-8' key={index}>
-					<div
-						key={index}
-						className='mb-0 grid grid-cols-[25px_1fr] items-center pb-4 last:mb-0 last:pb-0'
-					>
-						<span className='flex h-2 w-2 rounded-full bg-sky-500' />
-						<ControlPanel text={value} id={index} />
-						<CalendarIcon className='ml-6' />
-						<p className='ml-5'>09.2022 - 01.2023</p>
-					</div>
-				</CardContent>
+		<Card className='flex flex-col gap-7 p-6'>
+			<CardTitle>
+				Опыт
+				<AddButton />
+			</CardTitle>
+			{education?.map((_, indexOfCard) => (
+				<Card key={indexOfCard} className='flex flex-col gap-6 relative'>
+					<DeleteEducation indexOfCard={indexOfCard} />
+					<CardHeader>
+						<div className='flex items-center gap-2'>
+							<ControlPanel indexOfCard={indexOfCard} />
+						</div>
+					</CardHeader>
+					<CardFooter>
+						<DatePicker indexOfEducation={indexOfCard} />
+					</CardFooter>
+				</Card>
 			))}
 		</Card>
 	)

@@ -26,7 +26,7 @@ export const Start: FC = () => {
 						Создай свое <span className='text-[#3a82f7]'>резюме</span> за считанные минуты.
 					</h1>
 					{/* <img src="https://myfundedfutures.com/images/candlesticks-650.png" alt="" /> */}
-					<Link to='/about'>О проекте</Link>
+					{/* <Link to='/about'>О проекте</Link> */}
 				</div>
 			</main>
 		</div>

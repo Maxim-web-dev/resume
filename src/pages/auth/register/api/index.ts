@@ -10,14 +10,30 @@ export const registUser = async (data: TypeForm) => {
 			location: "",
 			mail: ""
 		},
-		education: "",
+		education: [
+			{ 
+				text: "",
+				date: { 
+					from: '',
+					to: '' 
+				} 
+			}
+		],
 		experience: [
 			{
 				place: "",
 				tools: [],
 				description: []
 			}
-		]
+		],
+		projects: [
+			{
+				name: "",
+				description: "",
+				link: "",
+			}
+		],
+		skills: []
 	}
 	try {
 		const res = await axios.post(

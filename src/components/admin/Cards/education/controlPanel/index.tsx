@@ -16,26 +16,21 @@ import {
 } from '@/main'
 
 interface props {
-	text: string
-	id: number
+	indexOfCard: number
 }
-export const ControlPanel: FC<props> = ({ text, id }) => {
-	const [value, setValue] = useState<string>(text)
-	const { changeEducation, deleteEducation } = useStore()
+export const ControlPanel: FC<props> = ({ indexOfCard }) => {
+	const { education, changeEducation } = useStore()
+	const [value, setValue] = useState<string>(education[indexOfCard].text)
 
 	const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) =>
 		setValue(e.target.value)
 
-	const handleSubmit = () => changeEducation(id, value)
+	const handleSubmit = () => changeEducation(indexOfCard, value)
 
-	const handleDelete = (): void => {
-		deleteEducation(id)
-		setValue('')
-	}
 	return (
 		<Dialog>
 			<DialogTrigger asChild>
-				<p className='cursor-pointer'>{text}</p>
+				<p className='cursor-pointer'>{education[indexOfCard].text || 'Обучение'}</p>
 			</DialogTrigger>
 			<DialogContent className='sm:max-w-[425px]'>
 				<DialogHeader>
@@ -57,11 +52,6 @@ export const ControlPanel: FC<props> = ({ text, id }) => {
 					</div>
 				</div>
 				<DialogFooter className='sm:justify-between'>
-					<DialogClose asChild>
-						<Button variant='destructive' onClick={handleDelete}>
-							Удалить
-						</Button>
-					</DialogClose>
 					<DialogClose asChild>
 						<Button onClick={handleSubmit}>Сохранить</Button>
 					</DialogClose>

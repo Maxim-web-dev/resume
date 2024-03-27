@@ -37,11 +37,11 @@ export const AddSkillButton: FC = () => {
 	return (
 		<Dialog>
 			<DialogTrigger asChild>
-				{skills?.length < 20 && (
+				{skills?.length < 20 || !skills ? (
 					<div className='inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-normal transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 hover:bg-secondary/80 cursor-pointer ml-2'>
 						Добавить
 					</div>
-				)}
+				): ''}
 			</DialogTrigger>
 			<DialogContent className='sm:max-w-[425px]'>
 				<DialogHeader>

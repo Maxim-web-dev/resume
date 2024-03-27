@@ -68,12 +68,18 @@ export const useStore = create<TypeStore>(set => ({
 	education: [],
 	addEducation: (text) => set(state => {
 		return {
-			education: [...state.education, text]
+			education: [...state.education, {
+				text,
+				date: {
+					from: new Date(),
+					to: new Date(),
+				}
+			}]
 		}
 	}),
 	changeEducation: (indexOfCard, text) => set(state => {
 		const education = [...state.education]
-		education[indexOfCard] = text
+		education[indexOfCard].text = text
 		return {
 			education: education
 		}
@@ -84,19 +90,25 @@ export const useStore = create<TypeStore>(set => ({
 			education: education
 		}
 	}),
-
-	experience: [
-		{
-			place: '',
-			tools: [],
-			description: []
+	setDateEducation: (indexOfCard, date) => set(state => {
+		const education = [...state.education]
+		education[indexOfCard].date.from = date.from
+		education[indexOfCard].date.to = date.from
+		return {
+			education: education
 		}
-	],
+	}),
+
+	experience: [],
 	addExperience: () => set(state => {
 		const newExperience = {
 			place: '',
 			tools: [],
-			description: []
+			description: [],
+			date: {
+				from: new Date(),
+				to: new Date(),
+			}
 		}
 		const experience = [...state.experience, newExperience]
 		return {
@@ -178,6 +190,14 @@ export const useStore = create<TypeStore>(set => ({
 		const experience = [...state.experience]
 		experience[indexOfCard].description.splice(indexOfElement, 1)
 
+		return {
+			experience: experience
+		}
+	}),
+	setDateExperience: (indexOfCard, date) => set(state => {
+		const experience = [...state.experience]
+		experience[indexOfCard].date.from = date.from
+		experience[indexOfCard].date.to = date.to
 		return {
 			experience: experience
 		}
@@ -269,3 +289,5 @@ export const useStore = create<TypeStore>(set => ({
 	}),
 
 }))
+
+

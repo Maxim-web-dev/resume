@@ -1,5 +1,9 @@
 .viewName {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	background-image: linear-gradient(to right, #d8ae5e, #3a82f7);
+	background-size: contain;
 	font-family: 'Inter', sans-serif;
 	font-optical-sizing: auto;
 	font-weight: 900;
