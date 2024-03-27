@@ -8,7 +8,7 @@ export const Start: FC = () => {
 		<div className={style.wrapper}>
 			<header className='flex justify-end w-full gap-5 items-center self-start'>
 				<Link
-					to='resume/user/admin'
+					to='/resume/user/admin'
 					className='transform hover:scale-110 transition-transform duration-300'
 				>
 					<button className='flex items-center gap-1'>
