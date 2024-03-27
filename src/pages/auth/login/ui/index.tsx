@@ -17,14 +17,14 @@ export const Login: FC = () => {
 	} = useForm<TypeForm>({
 		mode: 'onBlur',
 	})
-	
+
 	const onSubmit = async (data: TypeForm) => {
 		try {
 			const response = await axios.get(
 				`https://65a02bdf7310aa1f8144b77c.mockapi.io/users?name=${data.name}&password=${data.password}`
 			)
 			localStorage.setItem('id', response.data[0].id)
-			navigate('resume/user/admin')
+			navigate('/resume/user/admin')
 		} catch (error) {
 			console.error(error)
 			toast.error('Похоже пользователя не существует', { duration: 3000 })
@@ -80,7 +80,7 @@ export const Login: FC = () => {
 					</button>
 					<div className='flex gap-3'>
 						<p className='text-[#87878c]'>Еще нет аккаунта?</p>
-						<Link to='resume/register' className='text-[#d8ae5e]'>
+						<Link to='/resume/register' className='text-[#d8ae5e]'>
 							Зарегистрироваться
 						</Link>
 					</div>

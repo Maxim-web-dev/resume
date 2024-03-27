@@ -18,7 +18,7 @@ export const Register: FC = () => {
 	const navigate = useNavigate()
 	const onSubmit = async (data: TypeForm) => {
 		await registUser(data)
-		navigate('resume/user/admin')
+		navigate('/resume/user/admin')
 	}
 	return (
 		<div className={style.wrapper}>
