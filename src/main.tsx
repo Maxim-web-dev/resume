@@ -1,10 +1,45 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
+import App from './app/App.tsx'
 import './index.css'
 
+export * from '@/app/store/user.ts'
+export * from '@/app/types/form.ts'
+export * from '@/app/types/user.ts'
+export * from '@/components/admin/Cards/education/index.tsx'
+export * from '@/components/admin/Cards/experience/index.tsx'
+export * from '@/components/admin/Cards/experience/items/problem.tsx'
+export * from '@/components/admin/Cards/experience/items/tool.tsx'
+export * from '@/components/admin/job/badge.tsx'
+export * from '@/components/admin/job/index.tsx'
+export * from '@/components/admin/location/index.tsx'
+export * from '@/components/admin/mail/index.tsx'
+export * from '@/components/guest/bioCard/BioCard.tsx'
+export * from '@/components/guest/educationCard/index.tsx'
+export * from '@/components/guest/experienceCard/index.tsx'
+export * from '@/pages/about'
+export * from '@/pages/auth/login/ui'
+export * from '@/pages/auth/register/ui'
+export * from '@/pages/error'
+export * from '@/pages/layout/index.tsx'
+export * from '@/pages/start'
+export * from '@/pages/user/admin/ui'
+export * from '@/pages/user/guest/view/ui/index.tsx'
+export * from '@/processes/auth/requireAuth.tsx'
+export * from '@/shared/shadcn/badge.tsx'
+export * from '@/shared/shadcn/button.tsx'
+export * from '@/shared/shadcn/dialog.tsx'
+export * from '@/shared/shadcn/input.tsx'
+export * from '@/shared/shadcn/label.tsx'
+export * from '@/shared/shadcn/skeleton.tsx'
+export * from '@/shared/shadcn/textarea.tsx'
+export * from '@/shared/shadcn/tooltip.tsx'
+export * from '@/shared/svg/location.tsx'
+export * from '@/shared/svg/mail.tsx'
+export * from '@/shared/theme/mode-toggle.tsx'
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+	<React.StrictMode>
+		<App />
+	</React.StrictMode>
 )

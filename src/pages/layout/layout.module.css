@@ -1,0 +1,15 @@
+.logo {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	position: absolute;
+	top: 30px;
+	left: 30px;
+	color: white;
+}
+.modeToggle {
+	display: flex;
+	position: absolute;
+	top: 30px;
+	right: 30px;
+}
