@@ -37,8 +37,8 @@ const App: FC = () => {
 				<Route path='/resume/register' element={<Register />} />
 				<Route path='/resume/login' element={<Login />} />
 				<Route path='/resume/about' element={<About />} />
-			</Route>
-		)
+			</Route>, 
+		), {basename: '/resume'}
 	)
 	return (
 		<ThemeProvider defaultTheme='dark' storageKey='vite-ui-theme'>
