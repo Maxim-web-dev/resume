@@ -21,7 +21,7 @@ import { ThemeProvider } from '@/shared/theme/theme-provider'
 const App: FC = () => {
 	const router = createBrowserRouter(
 		createRoutesFromElements(
-			<Route path='/resume' element={<Layout />} errorElement={<Error />}>
+			<Route path='/' element={<Layout />} errorElement={<Error />}>
 				<Route index element={<Start />} />
 				<Route path='user'>
 					<Route
@@ -34,9 +34,9 @@ const App: FC = () => {
 					/>
 					<Route path='view/:id' element={<View />} />
 				</Route>
-				<Route path='/resume/register' element={<Register />} />
-				<Route path='/resume/login' element={<Login />} />
-				<Route path='/resume/about' element={<About />} />
+				<Route path='register' element={<Register />} />
+				<Route path='login' element={<Login />} />
+				<Route path='about' element={<About />} />
 			</Route>, 
 		), {basename: '/resume'}
 	)

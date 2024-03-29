@@ -8,7 +8,7 @@ export const Start: FC = () => {
 		<div className={style.wrapper}>
 			<header className='flex justify-end w-full gap-5 items-center self-start'>
 				<Link
-					to='/resume/user/admin'
+					to='/user/admin'
 					className='transform hover:scale-110 transition-transform duration-300'
 				>
 					<button className='flex items-center gap-1'>
@@ -16,7 +16,7 @@ export const Start: FC = () => {
 						<ArrowRight size={17} />
 					</button>
 				</Link>
-				<Link to='/resume/register' className={style.button}>
+				<Link to='/register' className={style.button}>
 					Регистрация
 				</Link>
 			</header>

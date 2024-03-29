@@ -9,7 +9,7 @@ export const Layout: FC = () => {
 		<>
 			<div className={style.logo}>
 				<GanttChartSquare color='white' />
-				<Link to='/resume' className={style.logoText}>
+				<Link to='/' className={style.logoText}>
 					<h1>Resume</h1>
 				</Link>
 			</div>
