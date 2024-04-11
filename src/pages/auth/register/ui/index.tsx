@@ -70,7 +70,7 @@ export const Register: FC = () => {
 					</button>
 					<div className='flex gap-3'>
 						<p className='text-[#87878c]'>Уже есть аккаунт?</p>
-						<Link to='/resume/login' className='text-[#d8ae5e]'>
+						<Link to='/login' className='text-[#d8ae5e]'>
 							Войти
 						</Link>
 					</div>

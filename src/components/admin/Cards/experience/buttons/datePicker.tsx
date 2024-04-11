@@ -22,8 +22,8 @@ export const DatePicker: FC<props> = ({
 }) => {
 	const { experience, setDateExperience } = useStore()
 
-  const fromDate = experience[indexOfExperience].date.from ? new Date(experience[indexOfExperience].date.from) : new Date()  
-  const toDate = experience[indexOfExperience].date.to ? new Date(experience[indexOfExperience].date.to) : new Date()  
+  const fromDate = experience[indexOfExperience]?.date?.from ? new Date(experience[indexOfExperience].date.from) : new Date()  
+  const toDate = experience[indexOfExperience]?.date?.to ? new Date(experience[indexOfExperience].date.to) : new Date()  
 
 	const [date, setDate] = useState<DateRange | undefined>({
 		from: fromDate,

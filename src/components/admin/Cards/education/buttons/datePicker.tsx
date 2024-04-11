@@ -22,8 +22,8 @@ export const DatePicker: FC<props> = ({
 }) => {
 	const { education, setDateEducation } = useStore()
 
-  const fromDate = education[indexOfEducation].date.from ? new Date(education[indexOfEducation].date.from) : new Date()  
-  const toDate = education[indexOfEducation].date.to ? new Date(education[indexOfEducation].date.to) : new Date()  
+  const fromDate = education[indexOfEducation]?.date?.from ? new Date(education[indexOfEducation].date.from) : new Date()  
+  const toDate = education[indexOfEducation]?.date?.to ? new Date(education[indexOfEducation].date.to) : new Date()  
 
 	const [date, setDate] = useState<DateRange | undefined>({
 		from: fromDate,

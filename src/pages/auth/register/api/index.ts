@@ -23,7 +23,8 @@ export const registUser = async (data: TypeForm) => {
 			{
 				place: "",
 				tools: [],
-				description: []
+				description: [],
+				date: { from: '', to: '' }
 			}
 		],
 		projects: [

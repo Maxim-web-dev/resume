@@ -1,6 +1,6 @@
 import { FC, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { getUser } from '../api'
+import { useUserRequest } from '../api'
 import {
 	useStore,
 	ViewExperience,
@@ -14,21 +14,22 @@ import { ViewProjects } from '@/components/guest/projects'
 import { ViewSkills } from '@/components/guest/skillsCard'
 
 export const View: FC = () => {
-	const { id } = useParams()
-	const { setViewUser } = useStore()
+	// const { id } = useParams()
+	// const { setViewUser } = useStore()
 
-	useEffect(() => {
-		const getUserById = async (id: string) => {
-			try {
-				const response = await getUser(id)
-				response && setViewUser(response)
-				console.log(response)
-			} catch (error) {
-				console.error(error)
-			}
-		}
-		id && getUserById(id)
-	}, [])
+	// useEffect(() => {
+	// 	const getUserById = async (id: string) => {
+	// 		try {
+	// 			const response = await getUser(id)
+	// 			response && setViewUser(response)
+	// 			console.log(response)
+	// 		} catch (error) {
+	// 			console.error(error)
+	// 		}
+	// 	}
+	// 	id && getUserById(id)
+	// }, [])
+	useUserRequest()
 	return (
 		<div className={style.wrapper}>
 			<div className={style.modeToggle}>
