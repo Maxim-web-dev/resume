@@ -1,6 +1,7 @@
 import { FC, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { getUser } from '../api'
+// import { useUserRequest } from '../api'
+
 import {
 	useStore,
 	ViewExperience,
@@ -12,6 +13,7 @@ import style from './viewUser.module.css'
 import { Account } from '@/shared/buttons/account'
 import { ViewProjects } from '@/components/guest/projects'
 import { ViewSkills } from '@/components/guest/skillsCard'
+import { getUser } from '../api'
 
 export const View: FC = () => {
 	const { id } = useParams()
@@ -29,6 +31,7 @@ export const View: FC = () => {
 		}
 		id && getUserById(id)
 	}, [])
+	// useUserRequest()
 	return (
 		<div className={style.wrapper}>
 			<div className={style.modeToggle}>
