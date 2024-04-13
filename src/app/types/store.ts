@@ -1,5 +1,4 @@
-import { TypeEducationElement, TypeExperienceElement, TypeProjectElement, TypeSkillElement } from './elementsOfUser'
-import { TypeUser } from './user'
+import { TypeEducationElement, TypeExperienceElement, TypeProjectElement, TypeSkillElement, TypeUser } from '@/app/types'
 
 type TypeData = {
 	name: string,

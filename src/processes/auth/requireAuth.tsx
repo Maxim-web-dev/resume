@@ -4,6 +4,7 @@ import { Navigate } from 'react-router-dom'
 interface props {
 	children: ReactNode
 }
+
 export const RequireAuth: FC<props> = ({ children }) => {
 	const id: null | string | undefined = localStorage.getItem('id')
 

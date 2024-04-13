@@ -11,9 +11,8 @@ import {
 	DialogTrigger,
 	Input,
 	Label,
-	//custom
-	useStore,
-} from '@/main'
+} from '@/shared/shadcn'
+import { useStore } from '@/app/store'
 
 interface props {
 	title: string,

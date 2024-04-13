@@ -10,12 +10,11 @@ import {
 	Button,
 	Input,
 	Label,
-	//custom
-	useStore,
-	JobBadge,
-} from '@/main'
+} from '@/shared/shadcn'
+import { JobBadge } from './badge'
+import { useStore } from '@/app/store'
 
-export const JobDialog: FC = () => {
+export const JobCard: FC = () => {
 	const [value, setValue] = useState('')
 	const { job, addJob } = useStore()
 

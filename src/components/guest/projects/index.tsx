@@ -1,5 +1,6 @@
-import { useStore } from '@/main'
 import { FC } from 'react'
+import { Link2Icon } from '@radix-ui/react-icons'
+import { useStore } from '@/app/store'
 import {
 	Card,
 	CardContent,
@@ -7,9 +8,8 @@ import {
 	CardHeader,
 	CardTitle,
 } from '@/shared/shadcn/card'
-import { Link2Icon } from '@radix-ui/react-icons'
 
-export const ViewProjects: FC = () => {
+export const GuestProjectsCard: FC = () => {
 	const { viewProjects } = useStore()
 
 	return (

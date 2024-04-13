@@ -1,5 +1,4 @@
-import { TypeEducationElement, TypeExperienceElement, TypeProjectElement, TypeSkillElement } from './elementsOfUser'
-
+import { TypeEducationElement, TypeExperienceElement, TypeProjectElement, TypeSkillElement } from '@/app/types'
 
 export type TypeUser = {
 	id: number,

@@ -1,9 +1,9 @@
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
-import style from './start.module.css'
 import { ArrowRight } from 'lucide-react'
+import style from './start.module.css'
 
-export const Start: FC = () => {
+export const StartPage: FC = () => {
 	return (
 		<div className={style.wrapper}>
 			<header className='flex justify-end w-full gap-5 items-center self-start'>
@@ -17,16 +17,16 @@ export const Start: FC = () => {
 					</button>
 				</Link>
 				<Link to='/register' className={style.button}>
-					Регистрация
+					<button>Регистрация</button>
 				</Link>
 			</header>
 			<main>
-				<div className=''>
+				<div>
 					<h1 className={style.title}>
-						Создай свое <span className='text-[#3a82f7]'>резюме</span> за считанные минуты.
+						Создай свое <span className='text-[#3a82f7]'>резюме</span> за
+						считанные минуты.
 					</h1>
-					{/* <img src="https://myfundedfutures.com/images/candlesticks-650.png" alt="" /> */}
-					{/* <Link to='/about'>О проекте</Link> */}
+					<Link to='/about'>О проекте</Link>
 				</div>
 			</main>
 		</div>

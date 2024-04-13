@@ -10,12 +10,11 @@ import {
 	Input,
 	Label,
 	Button,
-	// Custom
-	useStore,
 	Badge,
-} from '@/main'
+} from '@/shared/shadcn'
+import { useStore } from '@/app/store'
 
-export const MailDialog: FC = () => {
+export const MailCard: FC = () => {
 	const [value, setValue] = useState('')
 	const { mail, setMail, deleteMail } = useStore()
 
@@ -30,9 +29,16 @@ export const MailDialog: FC = () => {
 	return (
 		<Dialog>
 			<DialogTrigger asChild>
-				<h2 className='cursor-pointer'>{mail || <Badge variant='outline' className='inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-normal transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 hover:bg-secondary/80 cursor-pointer ml-2'>
-					Почта
-				</Badge>}</h2>
+				<h2 className='cursor-pointer'>
+					{mail || (
+						<Badge
+							variant='outline'
+							className='inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-normal transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 hover:bg-secondary/80 cursor-pointer ml-2'
+						>
+							Почта
+						</Badge>
+					)}
+				</h2>
 			</DialogTrigger>
 			<DialogContent className='sm:max-w-[425px]'>
 				<DialogHeader>
@@ -45,7 +51,6 @@ export const MailDialog: FC = () => {
 						</Label>
 						<Input
 							id='mail'
-							type='email'
 							className='col-span-3'
 							placeholder='Пример: user@gmail.com'
 							value={value}

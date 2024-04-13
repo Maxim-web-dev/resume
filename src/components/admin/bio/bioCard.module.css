@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Lexend:wght@100..900&display=swap');
+
+.viewName {
+	display: flex;
+	justify-content: center;
+	background-image: linear-gradient(to right, #d8ae5e, #3a82f7);
+	font-family: 'Inter', sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 900;
+	font-size: 34px;
+	font-style: normal;
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+	padding-bottom: 1vh;
+}
