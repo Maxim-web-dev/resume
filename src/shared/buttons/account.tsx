@@ -1,5 +1,9 @@
-import { Button } from '@/main'
+import { FC } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { User, UserRoundPlus } from 'lucide-react'
+import { EnterIcon, ExitIcon } from '@radix-ui/react-icons'
 import {
+	Button,
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuGroup,
@@ -8,13 +12,9 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuShortcut,
 	DropdownMenuTrigger,
-} from '@/shared/shadcn/dropdown-menu'
-import { EnterIcon, ExitIcon } from '@radix-ui/react-icons'
-import { User, UserRoundPlus } from 'lucide-react'
-import { FC } from 'react'
-import { useNavigate } from 'react-router-dom'
+} from '@/shared/shadcn'
 
-export const Account: FC = () => {
+export const AccountButton: FC = () => {
 	const navigate = useNavigate()
 
 	const logOut = () => {
@@ -22,13 +22,8 @@ export const Account: FC = () => {
 		navigate('/login')
 	}
 
-	const createAccount = () => {
-		navigate('/register')
-	}
-
-	const loginAccount = () => {
-		navigate('/user/admin')
-	}
+	const createAccount = () => navigate('/register')
+	const loginAccount = () => navigate('/user/admin')
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>

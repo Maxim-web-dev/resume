@@ -1,9 +1,9 @@
-import { Button } from '@/main'
+import { Button } from '@/shared/shadcn'
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
 import style from './error.module.css'
 
-export const Error: FC = () => {
+export const ErrorPage: FC = () => {
 	return (
 		<div className={style.wrapper}>
 			<h1>Ошибка!</h1>

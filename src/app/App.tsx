@@ -2,67 +2,45 @@ import { FC } from 'react'
 import {
 	Route,
 	RouterProvider,
-	// createBrowserRouter,
 	createHashRouter,
 	createRoutesFromElements,
 } from 'react-router-dom'
-
 import {
-	About,
-	Error,
+	AboutPage,
+	AdminUserPage,
+	ErrorPage,
+	GuestUserPage,
 	Layout,
-	Login,
-	Register,
-	RequireAuth,
-	Start,
-	User,
-	View,
-} from '@/main'
-import { ThemeProvider } from '@/shared/theme/theme-provider'
+	LoginPage,
+	RegisterPage,
+	StartPage,
+} from '@/pages'
+import { RequireAuth } from '@/processes/auth/requireAuth'
+import { ThemeProvider } from '@/shared/buttons/theme/theme-provider'
+
 const App: FC = () => {
-	// const router = createBrowserRouter(
-	// 	createRoutesFromElements(
-	// 		<Route path='/' element={<Layout />} errorElement={<Error />}>
-	// 			<Route index element={<Start />} />
-	// 			<Route path='user'>
-	// 				<Route
-	// 					path='admin'
-	// 					element={
-	// 						<RequireAuth>
-	// 							<User />
-	// 						</RequireAuth>
-	// 					}
-	// 				/>
-	// 				<Route path='view/:id' element={<View />} />
-	// 			</Route>
-	// 			<Route path='register' element={<Register />} />
-	// 			<Route path='login' element={<Login />} />
-	// 			<Route path='about' element={<About />} />
-	// 		</Route>, 
-	// 	), {basename: '/resume'}
-	// )
 	const router = createHashRouter(
 		createRoutesFromElements(
-			<Route path='/' element={<Layout />} errorElement={<Error />}>
-				<Route index element={<Start />} />
+			<Route path='/' element={<Layout />} errorElement={<ErrorPage />}>
+				<Route index element={<StartPage />} />
 				<Route path='user'>
 					<Route
 						path='admin'
 						element={
 							<RequireAuth>
-								<User />
+								<AdminUserPage />
 							</RequireAuth>
 						}
 					/>
-					<Route path='view/:id' element={<View />} />
+					<Route path='view/:id' element={<GuestUserPage />} />
 				</Route>
-				<Route path='register' element={<Register />} />
-				<Route path='login' element={<Login />} />
-				<Route path='about' element={<About />} />
+				<Route path='register' element={<RegisterPage />} />
+				<Route path='login' element={<LoginPage />} />
+				<Route path='about' element={<AboutPage />} />
 			</Route>
 		)
 	)
-	
+
 	return (
 		<ThemeProvider defaultTheme='dark' storageKey='vite-ui-theme'>
 			<RouterProvider router={router} />
